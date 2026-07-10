@@ -1,17 +1,10 @@
 ---
 /**
- * Ponentes e invitados: grid de tarjetas con foto, nombre y cargo.
- * [EDITAR] Sustituye los placeholders con los ponentes confirmados
- * y sus fotografías (public/images/ponente-N.jpg).
+ * Ponentes e invitados. Estado actual: "Próximamente".
+ * [EDITAR] Cuando se confirmen los ponentes, restaura el grid de
+ * tarjetas con foto, nombre y cargo (public/images/ponente-N.jpg).
  */
 import SectionTitle from './SectionTitle.astro';
-
-const ponentes = [
-  { foto: '/images/ponente-1.svg', nombre: '[EDITAR] Dra. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
-  { foto: '/images/ponente-2.svg', nombre: '[EDITAR] Dr. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
-  { foto: '/images/ponente-3.svg', nombre: '[EDITAR] Dra. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
-  { foto: '/images/ponente-4.svg', nombre: '[EDITAR] Dr. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
-] as const;
 ---
 
 <section id="ponentes" class="scroll-mt-20 py-20 md:py-28">
@@ -20,25 +13,14 @@ const ponentes = [
       Ponentes del <span class="text-gold">evento</span>
     </SectionTitle>
 
-    <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
-      {
-        ponentes.map((ponente) => (
-          <li class="overflow-hidden rounded-2xl border border-navy/10 bg-card">
-            <img
-              src={ponente.foto}
-              alt={`Fotografía de ${ponente.nombre}`}
-              class="aspect-square w-full object-cover"
-              width="400"
-              height="400"
-              loading="lazy"
-            />
-            <div class="p-5">
-              <h3 class="font-semibold text-navy">{ponente.nombre}</h3>
-              <p class="mt-1 text-sm text-secondary">{ponente.cargo}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+    <div class="mx-auto mt-14 max-w-2xl rounded-2xl border border-dashed border-gold/50 bg-card px-8 py-14 text-center">
+      <span class="inline-block rounded-full bg-gold/15 px-4 py-1.5 text-sm font-bold uppercase tracking-brand text-gold-dark">
+        Próximamente
+      </span>
+      <p class="mt-5 text-lg leading-relaxed text-secondary">
+        Estamos confirmando a los ponentes e invitados del foro.
+        Muy pronto anunciaremos el cartel completo por aquí y en nuestras redes.
+      </p>
+    </div>
   </div>
 </section>

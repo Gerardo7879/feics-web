@@ -13,15 +13,15 @@ export const SITE = {
   trabajosFormUrl: 'https://forms.gle/NKUF5rsk5QQndDvo7',
 
   /** Fecha del foro en formato legible. */
-  eventDate: '[EDITAR] 00 de mes de 2026',
+  eventDate: '26 de noviembre de 2026',
 
   /** Fecha en formato ISO (para SEO / datos estructurados). */
-  eventDateISO: '2026-01-01', // [EDITAR] AAAA-MM-DD
+  eventDateISO: '2026-11-26',
 
   /** Sede del evento. */
   venue: {
     name: 'Universidad de Guanajuato, Campus León',
-    detail: '[EDITAR] Auditorio / edificio y dirección exacta',
+    detail: 'Auditorio por confirmar', // [EDITAR] edificio y dirección exacta cuando se definan
     city: 'León, Guanajuato, México',
   },
 

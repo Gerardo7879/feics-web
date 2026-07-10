@@ -29,6 +29,16 @@ import ContourLines from './ContourLines.astro';
       FEICS
     </p>
 
+    <!-- Badge de fecha y sede -->
+    <p class="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-sm font-medium text-navy">
+      <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd" />
+      </svg>
+      <time datetime={SITE.eventDateISO}>{SITE.eventDate}</time>
+      <span aria-hidden="true">·</span>
+      <span>Campus León, UG</span>
+    </p>
+
     <h1 class="mt-4 font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
       <span class="text-navy">Investigación.</span>
       <span class="text-gold">Innovación.</span>
