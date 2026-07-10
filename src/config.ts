@@ -18,6 +18,10 @@ export const SITE = {
   /** Fecha en formato ISO (para SEO / datos estructurados). */
   eventDateISO: '2026-11-26',
 
+  /** Inicio del evento con hora y zona horaria (countdown y schema.org).
+   *  08:00 corresponde al registro según el programa. */
+  eventStartDateTime: '2026-11-26T08:00:00-06:00',
+
   /** Sede del evento. */
   venue: {
     name: 'Universidad de Guanajuato, Campus León',
@@ -25,11 +29,12 @@ export const SITE = {
     city: 'León, Guanajuato, México',
   },
 
-  /** Contacto y redes sociales. [EDITAR] con los enlaces reales. */
-  contactEmail: 'feics@ugto.mx', // [EDITAR]
+  /** Contacto y redes sociales. [EDITAR] con los enlaces reales.
+   *  Deja una red como '' (vacío) para ocultar su ícono en el footer. */
+  contactEmail: 'feics@ugto.mx', // [EDITAR] confirmar que el buzón existe
   socials: {
-    facebook: 'https://www.facebook.com/PENDIENTE', // [EDITAR]
-    instagram: 'https://www.instagram.com/PENDIENTE', // [EDITAR]
+    facebook: '', // [EDITAR] p. ej. 'https://www.facebook.com/feicsug'
+    instagram: '', // [EDITAR] p. ej. 'https://www.instagram.com/feicsug'
   },
 
   /** SEO */

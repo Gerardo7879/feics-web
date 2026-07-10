@@ -41,9 +41,34 @@ import ContourLines from './ContourLines.astro';
 
     <h1 class="mt-4 font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
       <span class="text-navy">Investigación.</span>{' '}
-      <span class="text-gold">Innovación.</span>{' '}
+      <span class="text-gold-dark">Innovación.</span>{' '}
       <span class="text-navy">Impacto.</span>
     </h1>
+
+    <!-- Cuenta regresiva al inicio del foro -->
+    <div
+      id="cuenta-regresiva"
+      class="mt-8 hidden gap-3 sm:gap-4"
+      role="timer"
+      aria-label="Tiempo restante para el inicio del foro"
+    >
+      {
+        [
+          { id: 'cr-dias', etiqueta: 'días' },
+          { id: 'cr-horas', etiqueta: 'horas' },
+          { id: 'cr-minutos', etiqueta: 'min' },
+        ].map((unidad) => (
+          <div class="flex w-20 flex-col items-center rounded-2xl border border-navy/10 bg-card py-3 sm:w-24">
+            <span id={unidad.id} class="font-heading text-2xl font-bold tabular-nums text-navy sm:text-3xl">
+              --
+            </span>
+            <span class="mt-0.5 text-xs font-medium uppercase tracking-widest text-secondary">
+              {unidad.etiqueta}
+            </span>
+          </div>
+        ))
+      }
+    </div>
 
     <p class="mt-6 max-w-2xl text-lg leading-relaxed text-secondary">
       Bienvenidos al Foro Estudiantil de Investigación en Ciencias de la Salud.
@@ -67,3 +92,37 @@ import ContourLines from './ContourLines.astro';
     </div>
   </div>
 </section>
+
+<script>
+  import { SITE } from '../config';
+
+  const MS_POR_MINUTO = 60_000;
+  const MS_POR_HORA = 3_600_000;
+  const MS_POR_DIA = 86_400_000;
+
+  const contenedor = document.getElementById('cuenta-regresiva');
+  const celdas = {
+    dias: document.getElementById('cr-dias'),
+    horas: document.getElementById('cr-horas'),
+    minutos: document.getElementById('cr-minutos'),
+  };
+  const inicioForo = new Date(SITE.eventStartDateTime).getTime();
+
+  function actualizarCuenta() {
+    const restante = inicioForo - Date.now();
+    if (!contenedor || !celdas.dias || !celdas.horas || !celdas.minutos) return;
+    if (restante <= 0) {
+      // El foro ya comenzó: se retira la cuenta para no mostrar ceros.
+      contenedor.remove();
+      return;
+    }
+    celdas.dias.textContent = String(Math.floor(restante / MS_POR_DIA));
+    celdas.horas.textContent = String(Math.floor((restante % MS_POR_DIA) / MS_POR_HORA));
+    celdas.minutos.textContent = String(Math.floor((restante % MS_POR_HORA) / MS_POR_MINUTO));
+    contenedor.classList.remove('hidden');
+    contenedor.classList.add('flex');
+  }
+
+  actualizarCuenta();
+  window.setInterval(actualizarCuenta, MS_POR_MINUTO);
+</script>

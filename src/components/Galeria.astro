@@ -1,38 +1,25 @@
 ---
 /**
- * Galería de ediciones pasadas.
- * [EDITAR] Sustituye los SVG placeholder por fotografías reales
- * (public/images/galeria-N.jpg) y describe cada una en su alt.
+ * Galería de ediciones pasadas. Estado actual: "Próximamente".
+ * [EDITAR] Cuando tengas fotografías reales (public/images/galeria-N.jpg),
+ * restaura el grid de imágenes con un alt descriptivo por foto.
  */
 import SectionTitle from './SectionTitle.astro';
-
-const fotos = [1, 2, 3, 4, 5, 6].map((n) => ({
-  src: `/images/galeria-${n}.svg`,
-  alt: `Fotografía ${n} de una edición anterior del FEICS`,
-}));
 ---
 
 <section id="galeria" class="scroll-mt-20 bg-card py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <SectionTitle eyebrow="Memorias">
-      Ediciones <span class="text-gold">pasadas</span>
+      Ediciones <span class="text-gold-dark">pasadas</span>
     </SectionTitle>
 
-    <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
-      {
-        fotos.map((foto) => (
-          <li>
-            <img
-              src={foto.src}
-              alt={foto.alt}
-              class="aspect-[4/3] w-full rounded-2xl border border-navy/10 object-cover"
-              width="600"
-              height="450"
-              loading="lazy"
-            />
-          </li>
-        ))
-      }
-    </ul>
+    <div class="mx-auto mt-14 max-w-2xl rounded-2xl border border-dashed border-gold/50 bg-cream px-8 py-14 text-center">
+      <span class="inline-block rounded-full bg-gold/15 px-4 py-1.5 text-sm font-bold uppercase tracking-brand text-gold-dark">
+        Próximamente
+      </span>
+      <p class="mt-5 text-lg leading-relaxed text-secondary">
+        Estamos preparando la galería con fotografías de ediciones anteriores del foro.
+      </p>
+    </div>
   </div>
 </section>

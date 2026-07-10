@@ -1,6 +1,38 @@
 ---
 import '../styles/global.css';
 import { SITE } from '../config';
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL('/og.png', Astro.site).href;
+
+/** Datos estructurados schema.org para resultados enriquecidos de Google. */
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'FEICS — Foro Estudiantil de Investigación en Ciencias de la Salud',
+  description: SITE.description,
+  startDate: SITE.eventStartDateTime,
+  endDate: SITE.eventDateISO,
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  image: [ogImageUrl],
+  url: canonicalUrl,
+  location: {
+    '@type': 'Place',
+    name: SITE.venue.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'León',
+      addressRegion: 'Guanajuato',
+      addressCountry: 'MX',
+    },
+  },
+  organizer: {
+    '@type': 'EducationalOrganization',
+    name: 'Universidad de Guanajuato — División de Ciencias de la Salud, Departamento de Medicina y Nutrición',
+    url: 'https://www.ugto.mx',
+  },
+};
 ---
 
 <html lang="es">
@@ -12,15 +44,24 @@ import { SITE } from '../config';
     <!-- SEO -->
     <title>{SITE.title}</title>
     <meta name="description" content={SITE.description} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FEICS" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={SITE.title} />
     <meta property="og:description" content={SITE.description} />
-    <meta property="og:image" content="/og.png" />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:locale" content="es_MX" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={SITE.title} />
+    <meta name="twitter:description" content={SITE.description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Datos estructurados: evento -->
+    <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
 
     <!-- Tipografías: Poppins (títulos) e Inter (cuerpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

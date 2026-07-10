@@ -1,0 +1,39 @@
+---
+/**
+ * Botón de registro flotante, solo visible en móvil (md:hidden) y
+ * únicamente cuando el hero salió de pantalla, para no duplicar el
+ * CTA "Registrarme" que ya se ve al llegar.
+ */
+import { SITE } from '../config';
+---
+
+<div
+  id="cta-flotante"
+  class="pointer-events-none fixed inset-x-4 bottom-4 z-40 translate-y-24 opacity-0 transition-all duration-300 md:hidden"
+>
+  <a
+    href={SITE.formUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="pointer-events-auto block rounded-full bg-gold px-6 py-3.5 text-center font-bold text-navy shadow-lg shadow-navy/20"
+  >
+    Registrarme al foro
+  </a>
+</div>
+
+<script>
+  const cta = document.getElementById('cta-flotante');
+  const hero = document.getElementById('inicio');
+
+  if (cta && hero && 'IntersectionObserver' in window) {
+    const observador = new IntersectionObserver(
+      ([entrada]) => {
+        const mostrar = !entrada.isIntersecting;
+        cta.classList.toggle('opacity-0', !mostrar);
+        cta.classList.toggle('translate-y-24', !mostrar);
+      },
+      { threshold: 0.1 },
+    );
+    observador.observe(hero);
+  }
+</script>
