@@ -1,5 +1,12 @@
 ---
 import '../styles/global.css';
+// Tipografías autoalojadas (antes Google Fonts): Poppins (títulos) e Inter (cuerpo)
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
 import { SITE } from '../config';
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -63,13 +70,6 @@ const eventSchema = {
     <!-- Datos estructurados: evento -->
     <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
 
-    <!-- Tipografías: Poppins (títulos) e Inter (cuerpo) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <a
