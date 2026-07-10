@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" role="img">
+  <rect width="600" height="450" fill="#f5f3ef"/>
+  <path d="M0 337.5 C 120 292.5, 210 382.5, 330 337.5 S 510 270, 600 315" fill="none" stroke="#c08a2d" stroke-opacity="0.4" stroke-width="2"/>
+  <path d="M0 382.5 C 120 337.5, 210 427.5, 330 382.5 S 510 315, 600 360" fill="none" stroke="#c08a2d" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Georgia, serif" font-size="41" letter-spacing="9" fill="#1b2a4d">FEICS</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#1b2a4d" opacity="0.6">Galería 3 — reemplazar</text>
+</svg>

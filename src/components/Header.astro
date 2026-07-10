@@ -1,0 +1,120 @@
+---
+/**
+ * Navegación fija con scroll suave a anclas y botón de registro.
+ */
+import { SITE } from '../config';
+
+const links = [
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#que-es', label: '¿Qué es?' },
+  { href: '#programa', label: 'Programa' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-40 border-b border-navy/10 bg-cream/90 backdrop-blur">
+  <nav aria-label="Navegación principal" class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <a href="#inicio" class="font-heading text-lg font-bold uppercase tracking-brand text-navy">
+      FEICS
+    </a>
+
+    <!-- Enlaces (escritorio) -->
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm font-medium text-secondary transition-colors hover:text-gold-dark"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href={SITE.formUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-gold px-5 py-2 text-sm font-bold text-navy transition-colors hover:bg-gold-dark hover:text-white"
+        >
+          Registro
+        </a>
+      </li>
+    </ul>
+
+    <!-- Botón menú (móvil) -->
+    <button
+      id="boton-menu"
+      type="button"
+      class="rounded-lg p-2 text-navy md:hidden"
+      aria-expanded="false"
+      aria-controls="menu-movil"
+      aria-label="Abrir menú de navegación"
+    >
+      <svg id="icono-abrir" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+      <svg id="icono-cerrar" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Menú (móvil) -->
+  <div id="menu-movil" class="hidden border-t border-navy/10 px-4 pb-6 pt-2 md:hidden">
+    <ul class="flex flex-col gap-1">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="block rounded-lg px-3 py-2 font-medium text-secondary hover:bg-navy/5 hover:text-navy"
+              data-enlace-movil
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="mt-3">
+        <a
+          href={SITE.formUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block rounded-full bg-gold px-5 py-2.5 text-center font-bold text-navy"
+        >
+          Registro
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const boton = document.getElementById('boton-menu');
+  const menu = document.getElementById('menu-movil');
+  const iconoAbrir = document.getElementById('icono-abrir');
+  const iconoCerrar = document.getElementById('icono-cerrar');
+
+  function alternarMenu(abrir: boolean) {
+    if (!boton || !menu || !iconoAbrir || !iconoCerrar) return;
+    menu.classList.toggle('hidden', !abrir);
+    iconoAbrir.classList.toggle('hidden', abrir);
+    iconoCerrar.classList.toggle('hidden', !abrir);
+    boton.setAttribute('aria-expanded', String(abrir));
+    boton.setAttribute('aria-label', abrir ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+  }
+
+  boton?.addEventListener('click', () => {
+    const abierto = boton.getAttribute('aria-expanded') === 'true';
+    alternarMenu(!abierto);
+  });
+
+  // Cierra el menú al elegir un enlace
+  document.querySelectorAll('[data-enlace-movil]').forEach((enlace) => {
+    enlace.addEventListener('click', () => alternarMenu(false));
+  });
+</script>

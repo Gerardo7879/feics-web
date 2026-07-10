@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img">
+  <rect width="400" height="400" fill="#f5f3ef"/>
+  <path d="M0 300 C 80 260, 140 340, 220.00000000000003 300 S 340 240, 400 280" fill="none" stroke="#c08a2d" stroke-opacity="0.4" stroke-width="2"/>
+  <path d="M0 340 C 80 300, 140 380, 220.00000000000003 340 S 340 280, 400 320" fill="none" stroke="#c08a2d" stroke-opacity="0.25" stroke-width="2"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Georgia, serif" font-size="36" letter-spacing="8" fill="#1b2a4d">FEICS</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1b2a4d" opacity="0.6">Ponente 4 — reemplazar</text>
+</svg>

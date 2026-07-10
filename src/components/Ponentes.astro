@@ -1,0 +1,44 @@
+---
+/**
+ * Ponentes e invitados: grid de tarjetas con foto, nombre y cargo.
+ * [EDITAR] Sustituye los placeholders con los ponentes confirmados
+ * y sus fotografías (public/images/ponente-N.jpg).
+ */
+import SectionTitle from './SectionTitle.astro';
+
+const ponentes = [
+  { foto: '/images/ponente-1.svg', nombre: '[EDITAR] Dra. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
+  { foto: '/images/ponente-2.svg', nombre: '[EDITAR] Dr. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
+  { foto: '/images/ponente-3.svg', nombre: '[EDITAR] Dra. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
+  { foto: '/images/ponente-4.svg', nombre: '[EDITAR] Dr. Nombre Apellido', cargo: '[EDITAR] Cargo · Institución' },
+] as const;
+---
+
+<section id="ponentes" class="scroll-mt-20 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Invitados">
+      Ponentes del <span class="text-gold">evento</span>
+    </SectionTitle>
+
+    <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      {
+        ponentes.map((ponente) => (
+          <li class="overflow-hidden rounded-2xl border border-navy/10 bg-card">
+            <img
+              src={ponente.foto}
+              alt={`Fotografía de ${ponente.nombre}`}
+              class="aspect-square w-full object-cover"
+              width="400"
+              height="400"
+              loading="lazy"
+            />
+            <div class="p-5">
+              <h3 class="font-semibold text-navy">{ponente.nombre}</h3>
+              <p class="mt-1 text-sm text-secondary">{ponente.cargo}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

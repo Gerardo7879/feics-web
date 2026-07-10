@@ -1,0 +1,38 @@
+---
+/**
+ * Galería de ediciones pasadas.
+ * [EDITAR] Sustituye los SVG placeholder por fotografías reales
+ * (public/images/galeria-N.jpg) y describe cada una en su alt.
+ */
+import SectionTitle from './SectionTitle.astro';
+
+const fotos = [1, 2, 3, 4, 5, 6].map((n) => ({
+  src: `/images/galeria-${n}.svg`,
+  alt: `[EDITAR] Fotografía ${n} de una edición anterior del FEICS (placeholder)`,
+}));
+---
+
+<section id="galeria" class="scroll-mt-20 bg-card py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Memorias">
+      Ediciones <span class="text-gold">pasadas</span>
+    </SectionTitle>
+
+    <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      {
+        fotos.map((foto) => (
+          <li>
+            <img
+              src={foto.src}
+              alt={foto.alt}
+              class="aspect-[4/3] w-full rounded-2xl border border-navy/10 object-cover"
+              width="600"
+              height="450"
+              loading="lazy"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

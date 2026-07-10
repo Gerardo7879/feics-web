@@ -1,0 +1,82 @@
+---
+/**
+ * Ejes / áreas de investigación del foro: tarjetas con ícono,
+ * título y descripción breve. [EDITAR] los ejes según la convocatoria.
+ */
+import SectionTitle from './SectionTitle.astro';
+
+const ejes = [
+  {
+    titulo: 'Investigación Clínica',
+    descripcion:
+      '[EDITAR] Estudios con pacientes, ensayos clínicos y casos que mejoran la práctica médica.',
+    icono: 'estetoscopio',
+  },
+  {
+    titulo: 'Ciencias Biomédicas',
+    descripcion:
+      '[EDITAR] Investigación básica y experimental: biología molecular, farmacología y más.',
+    icono: 'microscopio',
+  },
+  {
+    titulo: 'Salud Pública y Epidemiología',
+    descripcion:
+      '[EDITAR] Estudios poblacionales, prevención y políticas para la salud comunitaria.',
+    icono: 'comunidad',
+  },
+  {
+    titulo: 'Nutrición y Metabolismo',
+    descripcion:
+      '[EDITAR] Alimentación, estado nutricional y su relación con la salud y la enfermedad.',
+    icono: 'nutricion',
+  },
+] as const;
+---
+
+<section id="ejes" class="scroll-mt-20 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Ejes temáticos">
+      Áreas de <span class="text-gold">investigación</span>
+    </SectionTitle>
+
+    <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      {
+        ejes.map((eje) => (
+          <li class="rounded-2xl border border-navy/10 bg-card p-7">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+              {eje.icono === 'estetoscopio' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 3v6a5 5 0 0 0 10 0V3M5 3H4m2 0h1m7 0h-1m2 0h1" />
+                  <path d="M10 14v2a5 5 0 0 0 10 0v-2" />
+                  <circle cx="20" cy="12" r="2" />
+                </svg>
+              )}
+              {eje.icono === 'microscopio' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 3l4 4-5 5-4-4z" />
+                  <path d="M10 10l2 2M5 21h14M8 21a7 7 0 1 1 11-5.7" />
+                </svg>
+              )}
+              {eje.icono === 'comunidad' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="7" r="3" />
+                  <path d="M6 21v-1a6 6 0 0 1 12 0v1" />
+                  <circle cx="4.5" cy="10" r="2" />
+                  <circle cx="19.5" cy="10" r="2" />
+                </svg>
+              )}
+              {eje.icono === 'nutricion' && (
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 8c-4 0-6 2.5-6 6s2.5 7 6 7 6-3.5 6-7-2-6-6-6z" />
+                  <path d="M12 8V5m0 0c0-1.5 1.5-3 3-3 0 1.5-1.5 3-3 3z" />
+                </svg>
+              )}
+            </span>
+            <h3 class="mt-5 text-lg font-semibold text-navy">{eje.titulo}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-secondary">{eje.descripcion}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

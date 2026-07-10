@@ -1,0 +1,39 @@
+---
+/**
+ * Programa del evento: línea de tiempo vertical.
+ * [EDITAR] Ajusta horarios y actividades del foro aquí.
+ */
+import SectionTitle from './SectionTitle.astro';
+
+const agenda = [
+  { hora: '08:00', titulo: 'Registro y bienvenida', detalle: '[EDITAR] Entrega de gafetes y material.' },
+  { hora: '09:00', titulo: 'Conferencia magistral inaugural', detalle: '[EDITAR] Ponente y título de la conferencia.' },
+  { hora: '10:30', titulo: 'Presentaciones orales', detalle: '[EDITAR] Trabajos seleccionados por eje temático.' },
+  { hora: '12:30', titulo: 'Sesión de carteles', detalle: '[EDITAR] Exposición y evaluación de carteles científicos.' },
+  { hora: '14:30', titulo: 'Talleres y actividades académicas', detalle: '[EDITAR] Talleres simultáneos con registro previo.' },
+  { hora: '17:00', titulo: 'Premiación y clausura', detalle: '[EDITAR] Reconocimiento a los mejores trabajos.' },
+] as const;
+---
+
+<section id="programa" class="scroll-mt-20 bg-card py-20 md:py-28">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Agenda">
+      Programa del <span class="text-gold">foro</span>
+    </SectionTitle>
+
+    <ol class="mt-14 space-y-10 border-l-2 border-gold/40 pl-8">
+      {
+        agenda.map((item) => (
+          <li class="relative">
+            <span class="absolute -left-[2.44rem] top-1.5 h-3 w-3 rounded-full border-2 border-gold bg-card" aria-hidden="true" />
+            <p class="font-heading text-sm font-semibold uppercase tracking-widest text-gold-dark">
+              <time>{item.hora}</time> hrs
+            </p>
+            <h3 class="mt-1 text-lg font-semibold text-navy">{item.titulo}</h3>
+            <p class="mt-1 text-sm leading-relaxed text-secondary">{item.detalle}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
+
+/* ---------------------------------------------------------------
+   Estilos base FEICS — los tokens de color/tipografía viven en
+   tailwind.config.mjs
+   --------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-cream font-body text-navy antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-heading;
+}
+
+/* Anillo de foco visible y consistente para navegación por teclado */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}

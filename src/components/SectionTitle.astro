@@ -1,0 +1,28 @@
+---
+/**
+ * Título de sección con la línea dorada corta debajo (divisor de marca).
+ * El texto del título se pasa como slot para permitir palabras en
+ * marino/dorado alternadas.
+ */
+interface Props {
+  eyebrow?: string;
+  align?: 'left' | 'center';
+}
+
+const { eyebrow, align = 'center' } = Astro.props;
+const isCenter = align === 'center';
+---
+
+<div class={isCenter ? 'text-center' : 'text-left'}>
+  {
+    eyebrow && (
+      <p class="text-sm font-semibold uppercase tracking-brand text-gold-dark">
+        {eyebrow}
+      </p>
+    )
+  }
+  <h2 class="mt-3 text-3xl font-semibold text-navy md:text-4xl">
+    <slot />
+  </h2>
+  <div class:list={['mt-5 h-0.5 w-16 rounded-full bg-gold', isCenter && 'mx-auto']} aria-hidden="true"></div>
+</div>

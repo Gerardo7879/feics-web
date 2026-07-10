@@ -1,0 +1,24 @@
+---
+/**
+ * Decoración sutil: líneas doradas onduladas tipo curvas de nivel.
+ * Se posiciona en una esquina mediante la prop `class`
+ * (ej. "top-0 right-0" o "bottom-0 left-0 rotate-180").
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+  class:list={['pointer-events-none absolute -z-0 h-64 w-64 text-gold md:h-96 md:w-96', className]}
+  viewBox="0 0 400 400"
+  fill="none"
+  aria-hidden="true"
+>
+  <path d="M120 0c10 60-30 90 10 150s-20 110 30 160 0 90 20 90" stroke="currentColor" stroke-opacity="0.28" stroke-width="1.5" />
+  <path d="M180 0c14 55-24 95 14 148s-14 104 32 152 4 100 22 100" stroke="currentColor" stroke-opacity="0.22" stroke-width="1.5" />
+  <path d="M240 0c18 50-18 100 18 146s-8 98 34 144 8 110 24 110" stroke="currentColor" stroke-opacity="0.16" stroke-width="1.5" />
+  <path d="M300 0c22 45-12 105 22 144s-2 92 36 136 12 120 26 120" stroke="currentColor" stroke-opacity="0.1" stroke-width="1.5" />
+</svg>

@@ -1,0 +1,86 @@
+---
+/**
+ * Pie de página institucional: escudo UG, adscripción, redes y contacto.
+ */
+import { SITE } from '../config';
+
+const anio = new Date().getFullYear();
+---
+
+<footer id="contacto" class="scroll-mt-20 bg-navy py-16 text-white">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="grid gap-12 md:grid-cols-3">
+      <!-- Marca -->
+      <div>
+        <p class="font-heading text-xl font-bold uppercase tracking-brand">FEICS</p>
+        <p class="mt-3 text-sm leading-relaxed text-white/70">
+          <span class="text-white">Investigación.</span>
+          <span class="text-gold">Innovación.</span>
+          <span class="text-white">Impacto.</span>
+        </p>
+      </div>
+
+      <!-- Institución -->
+      <div class="flex items-start gap-4">
+        <!-- Escudo UG: [EDITAR] reemplaza este SVG placeholder por el
+             escudo oficial (ej. /images/escudo-ug.png) con la debida autorización. -->
+        <svg class="h-14 w-12 shrink-0" viewBox="0 0 48 56" fill="none" role="img" aria-label="Escudo de la Universidad de Guanajuato (placeholder)">
+          <path d="M4 4h40v28c0 12-9 18-20 20C13 50 4 44 4 32V4z" stroke="#c08a2d" stroke-width="2" />
+          <path d="M14 16h20M14 24h20M24 32v10" stroke="#c08a2d" stroke-width="1.5" />
+        </svg>
+        <address class="text-sm not-italic leading-relaxed text-white/70">
+          <strong class="font-semibold text-white">Universidad de Guanajuato</strong><br />
+          Campus León<br />
+          División de Ciencias de la Salud<br />
+          Departamento de Medicina y Nutrición
+        </address>
+      </div>
+
+      <!-- Contacto y redes -->
+      <div>
+        <h2 class="text-sm font-semibold uppercase tracking-widest text-gold">Contacto</h2>
+        <a
+          href={`mailto:${SITE.contactEmail}`}
+          class="mt-3 inline-block text-sm text-white/70 underline-offset-4 hover:text-gold hover:underline"
+        >
+          {SITE.contactEmail}
+        </a>
+        <ul class="mt-5 flex gap-4" role="list">
+          <li>
+            <a
+              href={SITE.socials.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook del FEICS (se abre en pestaña nueva)"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-gold hover:text-gold"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 21v-7h2.6l.4-3h-3V9.1c0-.9.3-1.5 1.6-1.5h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.7v7h2.8z" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href={SITE.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram del FEICS (se abre en pestaña nueva)"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-gold hover:text-gold"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-white/15 pt-6 text-center text-xs text-white/50">
+      © {anio} FEICS · Foro Estudiantil de Investigación en Ciencias de la Salud ·
+      Universidad de Guanajuato, Campus León
+    </div>
+  </div>
+</footer>
