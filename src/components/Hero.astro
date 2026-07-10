@@ -46,9 +46,11 @@ import ContourLines from './ContourLines.astro';
     </h1>
 
     <!-- Cuenta regresiva al inicio del foro -->
+    <!-- `invisible` (no `hidden`) para reservar el espacio y evitar
+         layout shift cuando el script muestra la cuenta. -->
     <div
       id="cuenta-regresiva"
-      class="mt-8 hidden gap-3 sm:gap-4"
+      class="invisible mt-8 flex gap-3 sm:gap-4"
       role="timer"
       aria-label="Tiempo restante para el inicio del foro"
     >
@@ -119,8 +121,7 @@ import ContourLines from './ContourLines.astro';
     celdas.dias.textContent = String(Math.floor(restante / MS_POR_DIA));
     celdas.horas.textContent = String(Math.floor((restante % MS_POR_DIA) / MS_POR_HORA));
     celdas.minutos.textContent = String(Math.floor((restante % MS_POR_HORA) / MS_POR_MINUTO));
-    contenedor.classList.remove('hidden');
-    contenedor.classList.add('flex');
+    contenedor.classList.remove('invisible');
   }
 
   actualizarCuenta();
