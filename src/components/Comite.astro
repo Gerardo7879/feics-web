@@ -1,7 +1,6 @@
 ---
 /**
- * Comité Organizador del foro (CABMT y MIC) y bloque del Comité
- * Estudiantil. [PENDIENTE: integrantes estudiantiles por definir y aprobar]
+ * Comité Organizador del foro (CABMT y MIC) y Comité Estudiantil.
  */
 import SectionTitle from './SectionTitle.astro';
 
@@ -17,6 +16,16 @@ const vocales = [
   { nombre: 'Dr. Benigno Linares Segovia', iniciales: 'BL' },
   { nombre: 'Dr. José A. de Jesús Álvarez Canales', iniciales: 'JA' },
 ] as const;
+
+const estudiantil = [
+  { nombre: 'Daniel Gonzalo Gómez Revilla Mancilla', iniciales: 'DG' },
+  { nombre: 'Gerardo Ortiz Castro', iniciales: 'GO' },
+  { nombre: 'Pamela Esqueda Aldrete', iniciales: 'PE' },
+  { nombre: 'Valeria Ortega Albarrán', iniciales: 'VO' },
+  { nombre: 'Víctor Julián Aguiñaga Caballero', iniciales: 'VA' },
+  { nombre: 'Ana Sofía Iñigo Martínez', iniciales: 'AI' },
+  { nombre: 'Luis Gabriel Gómez González', iniciales: 'LG' },
+] as const;
 ---
 
 <section id="comite" class="scroll-mt-20 bg-card py-20 md:py-28">
@@ -31,44 +40,57 @@ const vocales = [
     </p>
 
     <!-- Presidencia y secretaría -->
-    <ul class="mx-auto mt-12 grid max-w-2xl gap-6 sm:grid-cols-2" role="list">
+    <ul class="mx-auto mt-12 flex flex-wrap items-stretch justify-center gap-6" role="list">
       {
         directiva.map((persona) => (
-          <li class="rounded-2xl border border-gold/40 bg-cream p-7 text-center">
-            <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-navy font-heading text-xl font-bold text-gold" aria-hidden="true">
-              {persona.iniciales}
-            </span>
-            <h3 class="mt-4 font-semibold text-navy">{persona.nombre}</h3>
-            <p class="mt-1 text-sm font-semibold uppercase tracking-widest text-gold-dark">{persona.cargo}</p>
+          <li class="flex w-full sm:w-[calc(50%-0.75rem)] sm:max-w-xs">
+            <div class="flex h-full w-full flex-col items-center rounded-2xl border border-gold/40 bg-cream p-7 text-center">
+              <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-navy font-heading text-xl font-bold text-gold" aria-hidden="true">
+                {persona.iniciales}
+              </span>
+              <h3 class="mt-4 font-semibold text-navy">{persona.nombre}</h3>
+              <p class="mt-1 text-sm font-semibold uppercase tracking-widest text-gold-dark">{persona.cargo}</p>
+            </div>
           </li>
         ))
       }
     </ul>
 
     <!-- Vocales -->
-    <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <ul class="mt-6 flex flex-wrap items-stretch justify-center gap-6" role="list">
       {
         vocales.map((persona) => (
-          <li class="rounded-2xl border border-navy/10 bg-cream p-6 text-center">
-            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy font-heading font-bold text-gold" aria-hidden="true">
-              {persona.iniciales}
-            </span>
-            <h3 class="mt-3 font-semibold text-navy">{persona.nombre}</h3>
-            <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">Vocal</p>
+          <li class="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <div class="flex h-full w-full flex-col items-center rounded-2xl border border-navy/10 bg-cream p-6 text-center">
+              <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy font-heading font-bold text-gold" aria-hidden="true">
+                {persona.iniciales}
+              </span>
+              <h3 class="mt-3 font-semibold text-navy">{persona.nombre}</h3>
+              <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">Vocal</p>
+            </div>
           </li>
         ))
       }
     </ul>
 
     <!-- Comité Estudiantil -->
-    <div class="mx-auto mt-12 max-w-2xl rounded-2xl border border-dashed border-gold/50 bg-cream px-8 py-12 text-center">
-      <h3 class="font-heading text-xl font-semibold text-navy">Comité Estudiantil</h3>
-      <span class="mt-4 inline-block rounded-full bg-gold/15 px-4 py-1.5 text-sm font-bold uppercase tracking-brand text-gold-dark">
-        Próximamente
-      </span>
-      <p class="mt-4 leading-relaxed text-secondary">
-        Muy pronto anunciaremos a las y los integrantes del Comité Estudiantil del foro.
-      </p>
-    </div>
+    <h3 class="mt-16 text-center font-heading text-xl font-semibold text-navy sm:mt-20">
+      Comité Estudiantil
+    </h3>
+    <ul class="mx-auto mt-8 flex flex-wrap items-stretch justify-center gap-6" role="list">
+      {
+        estudiantil.map((persona) => (
+          <li class="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <div class="flex h-full w-full flex-col items-center rounded-2xl border border-navy/10 bg-cream p-6 text-center">
+              <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy font-heading font-bold text-gold" aria-hidden="true">
+                {persona.iniciales}
+              </span>
+              <h3 class="mt-3 font-semibold text-navy">{persona.nombre}</h3>
+              <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">Integrante</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>

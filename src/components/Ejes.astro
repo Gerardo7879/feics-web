@@ -57,10 +57,11 @@ const ejes = [
       Áreas de <span class="text-gold-dark">investigación</span>
     </SectionTitle>
 
-    <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <ul class="mt-14 flex flex-wrap items-stretch justify-center gap-6" role="list">
       {
         ejes.map((eje) => (
-          <li class="rounded-2xl border border-navy/10 bg-card p-7">
+          <li class="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+          <div class="flex h-full w-full flex-col rounded-2xl border border-navy/10 bg-card p-7">
             <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
               {eje.icono === 'estetoscopio' && (
                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -110,6 +111,7 @@ const ejes = [
             </span>
             <h3 class="mt-5 text-lg font-semibold text-navy">{eje.titulo}</h3>
             <p class="mt-2 text-sm leading-relaxed text-secondary">{eje.descripcion}</p>
+          </div>
           </li>
         ))
       }

@@ -7,61 +7,14 @@ import { Image } from 'astro:assets';
 import { SITE } from '../config';
 import fotoCarteles from '../assets/feics-2025-01.jpg';
 
-const lineamientos = [
+const datosClave = [
   {
-    titulo: '1. Modalidades',
-    puntos: [
-      'Trabajos de investigación: básicos o clínicos, con objetivos, metodología y resultados. Se aceptan protocolos de investigación en curso.',
-      'Reportes de caso clínico: de interés para las ciencias de la salud, con una breve revisión de la literatura.',
-    ],
+    texto: 'Cartel científico con defensa oral',
+    icono: 'M4 4h16v12H4z M9 20h6M12 16v4',
   },
   {
-    titulo: '2. Requisitos del resumen',
-    puntos: [
-      'Idioma español, en documento Word (.docx), fuente Arial 11, alineación justificada.',
-      'Extensión máxima: 400 palabras (sin contar título, autores y adscripción).',
-      'Título en negritas, máximo 20 palabras, sin abreviaturas.',
-      'Máximo 5 autores, en formato "Apellidos, Nombre(s)", indicando la adscripción de cada autor (departamento o licenciatura e institución) y el correo electrónico del autor de correspondencia.',
-      'Estructura con encabezados en negritas: Introducción, Objetivos, Metodología (o Descripción del caso), Resultados y Discusión, y Conclusiones.',
-      'Sin faltas de ortografía ni de gramática; los errores graves o recurrentes podrán ser motivo de no aceptación.',
-      'No mencionar la institución ni datos que identifiquen a los autores en el cuerpo del resumen: la evaluación es anónima.',
-      'En investigación clínica o en modelos animales, incluir el número de aprobación del Comité de Ética en Investigación correspondiente.',
-    ],
-  },
-  {
-    titulo: '3. Envío y dictamen',
-    puntos: [
-      `Envía el resumen al correo ${SITE.contactEmail} antes del ${SITE.abstractDeadline}, ${SITE.abstractDeadlineTime}. Se confirmará la recepción con un número de registro.`,
-      'Dos revisores del Comité Científico evalúan cada resumen de forma independiente y anónima, conforme a la rúbrica oficial (máximo 30 puntos).',
-      'El trabajo que obtenga 70% o más (21.0 puntos o más en promedio) será Aceptado para presentación oral de cartel científico. El dictamen es definitivo y se notificará por correo al autor de correspondencia.',
-    ],
-  },
-  {
-    titulo: '4. Del cartel científico',
-    puntos: [
-      'Medidas: 90 × 120 cm, orientación vertical, legible a un metro de distancia.',
-      'Título en negritas y mayúsculas; máximo 20 palabras.',
-      'Autores: apellidos seguidos del nombre(s); adscripción al pie.',
-      'Secciones: Introducción, Objetivos, Metodología / Descripción del caso, Resultados y Discusión, Conclusiones y Referencias (formato Vancouver).',
-      'El contenido del cartel debe corresponder al resumen aceptado.',
-    ],
-  },
-  {
-    titulo: '5. Presentación oral',
-    puntos: [
-      'Podrán presentar y defender el trabajo hasta 4 autores; se recomienda que sean 2. Todos los autores podrán estar presentes.',
-      'Presentación de 5 a 10 minutos cronometrados; réplica de 3 a 5 minutos de preguntas del jurado.',
-      'La fecha y hora de presentación se notificarán con anticipación al autor de correspondencia.',
-    ],
-  },
-  {
-    titulo: '6. Premiación y consideraciones finales',
-    puntos: [
-      'Se premiarán los tres primeros lugares de cada categoría según la calificación final del jurado.',
-      'No se aceptarán trabajos ya publicados o aceptados para publicación, ni enviados fuera del plazo o por un medio distinto al oficial.',
-      'El plagio o la fabricación de datos descalifica el trabajo de forma inmediata. El uso de inteligencia artificial en la redacción debe ser declarado.',
-      'Al enviar su resumen, los autores aceptan las reglas descritas en estos lineamientos.',
-    ],
+    texto: 'Medidas: 90 × 120 cm, orientación vertical',
+    icono: 'M6 3h9l3 3v15H6V3z M15 3v3h3',
   },
 ] as const;
 ---
@@ -90,8 +43,9 @@ const lineamientos = [
 
       <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-white/85">
         El {SITE.eventShortName} invita a estudiantes y profesionales de las
-        licenciaturas en Medicina, Nutrición, Enfermería, Ciencias Biomédicas y
-        CAFYD, entre otras áreas de la salud, a enviar sus trabajos libres.
+        licenciaturas en Medicina, Nutrición, Enfermería, Ciencias Biomédicas,
+        Psicología y CAFYS (Ciencias de la Actividad Física y Salud), entre
+        otras áreas de la salud, a enviar sus trabajos libres.
         Todos los trabajos aceptados se presentarán en modalidad de{' '}
         <strong class="text-gold">cartel científico con defensa oral</strong>.
       </p>
@@ -110,37 +64,66 @@ const lineamientos = [
         >
           Enviar mi trabajo a {SITE.contactEmail}
         </a>
-        <!-- [PENDIENTE: subir los lineamientos en PDF a public/ y activar este botón]
-        <a href="/lineamientos-feics.pdf" class="rounded-full border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-colors hover:border-gold hover:text-gold">
-          Descargar lineamientos (PDF)
-        </a>
-        -->
       </div>
     </div>
   </div>
 
-  <!-- Detalle de los lineamientos -->
+  <!-- Resumen compacto de los lineamientos -->
   <div class="bg-card py-16 md:py-24">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="grid gap-6 md:grid-cols-2">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <h3 class="font-heading text-xl font-semibold text-navy">Resumen de los lineamientos</h3>
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-secondary">
+        Se aceptan trabajos de investigación y reportes de caso clínico,
+        dictaminados de forma anónima por el Comité Científico. Los trabajos
+        aceptados se presentan como cartel científico con defensa oral ante un
+        jurado. El documento completo detalla requisitos del resumen, formato
+        del cartel y criterios de evaluación.
+      </p>
+
+      <ul class="mx-auto mt-8 flex max-w-2xl flex-wrap items-stretch justify-center gap-4" role="list">
         {
-          lineamientos.map((bloque) => (
-            <article class="rounded-2xl border border-navy/10 bg-cream p-7">
-              <h3 class="font-heading text-lg font-semibold text-navy">{bloque.titulo}</h3>
-              <ul class="mt-4 space-y-2.5" role="list">
-                {bloque.puntos.map((punto) => (
-                  <li class="flex gap-2.5 text-sm leading-relaxed text-secondary">
-                    <svg class="mt-1 h-3.5 w-3.5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
-                    {punto}
-                  </li>
-                ))}
-              </ul>
-            </article>
+          datosClave.map((dato) => (
+            <li class="flex w-full sm:w-[calc(50%-0.5rem)]">
+              <div class="flex h-full w-full items-center gap-3 rounded-2xl border border-navy/10 bg-cream p-5 text-left">
+                <svg class="h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={dato.icono} />
+                </svg>
+                <p class="text-sm font-semibold text-navy">{dato.texto}</p>
+              </div>
+            </li>
           ))
         }
-      </div>
+        <li class="flex w-full">
+          <div class="flex h-full w-full items-center gap-3 rounded-2xl border border-navy/10 bg-cream p-5 text-left">
+            <svg class="h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm1-12a1 1 0 1 0-2 0v4c0 .3.1.5.3.7l2.8 2.9a1 1 0 0 0 1.4-1.4L11 9.6V6Z" clip-rule="evenodd" />
+            </svg>
+            <p class="text-sm font-semibold text-navy">
+              Fecha límite: {SITE.abstractDeadline} · {SITE.abstractDeadlineTime}
+            </p>
+          </div>
+        </li>
+      </ul>
+
+      <a
+        href="/lineamientos-trabajos-libres-iv-feics.pdf"
+        download
+        target="_blank"
+        rel="noopener"
+        class="mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3.5 font-semibold text-white transition-colors hover:bg-secondary"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+        </svg>
+        Descargar lineamientos (PDF)
+      </a>
+
+      <p class="mt-6 text-sm text-secondary">
+        ¿Dudas sobre los lineamientos? Escríbenos a{' '}
+        <a href={`mailto:${SITE.contactEmail}`} class="font-medium text-gold-dark underline-offset-4 hover:underline">
+          {SITE.contactEmail}
+        </a>
+      </p>
     </div>
   </div>
 </section>
