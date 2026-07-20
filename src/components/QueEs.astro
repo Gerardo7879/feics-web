@@ -1,35 +1,73 @@
 ---
 /**
- * Sección "¿Qué es FEICS?": descripción del foro + fotografía.
+ * Sección "Acerca de FEICS": historia, objetivo general y fotografía
+ * de la edición 2025.
  */
+import { Image } from 'astro:assets';
 import SectionTitle from './SectionTitle.astro';
+import fotoForo from '../assets/feics-2025-02.jpg';
 ---
 
 <section id="que-es" class="scroll-mt-20 bg-card py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <SectionTitle eyebrow="Conócenos">
-      ¿Qué es <span class="text-gold-dark">FEICS</span>?
+      Acerca de <span class="text-gold-dark">FEICS</span>
     </SectionTitle>
 
     <div class="mt-14 grid items-center gap-12 md:grid-cols-2">
-      <p class="text-lg leading-relaxed text-secondary">
-        FEICS es el Foro Estudiantil de Investigación en Ciencias de la Salud,
-        un espacio académico donde estudiantes presentan investigaciones,
-        intercambian ideas y fortalecen su formación científica mediante
-        actividades de alto nivel.
-      </p>
+      <div>
+        <h3 class="font-heading text-xl font-semibold text-navy">Nuestra historia</h3>
+        <p class="mt-3 leading-relaxed text-secondary">
+          La idea de crear el Foro Estudiantil en Ciencias de la Salud surge en
+          noviembre de 2023, impulsada por miembros del Cuerpo Académico en
+          Biomedicina Traslacional (CABMT) y del posgrado de la Maestría en
+          Investigación Clínica (MIC), a partir de la necesidad de abrir un
+          espacio interactivo de vinculación entre la comunidad estudiantil y
+          académica de la Universidad de Guanajuato, Campus León, junto con
+          instituciones externas del ámbito de la salud y la sociedad en general.
+        </p>
+        <p class="mt-4 leading-relaxed text-secondary">
+          El foro busca presentar a los alumnos las líneas de investigación
+          vigentes del cuerpo docente, fomentar la colaboración y el intercambio
+          de ideas, alentar el interés de los estudiantes por involucrarse en
+          futuros protocolos científicos, impulsar el acceso al conocimiento e
+          incentivar vocaciones científicas.
+        </p>
+
+        <h3 class="mt-8 font-heading text-xl font-semibold text-navy">Objetivo general</h3>
+        <p class="mt-3 leading-relaxed text-secondary">
+          Brindar un espacio de comunicación entre estudiantes y profesores
+          investigadores de la Universidad de Guanajuato y de instituciones
+          externas. Esta actividad facilita el acercamiento e interacción de las
+          y los estudiantes de pregrado con expertos en investigación en el área
+          de la salud, regionales y nacionales, promoviendo el conocimiento de
+          las líneas de investigación vigentes para que en un futuro se
+          involucren en el desarrollo de protocolos científicos.
+        </p>
+
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-semibold text-navy">
+          <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+          Evento gratuito · Sin costo de inscripción ni de participación
+        </p>
+      </div>
 
       <figure>
-        <!-- [EDITAR] Reemplaza /images/foro.svg por una fotografía real del foro
-             (ej. /images/foro.jpg) y actualiza el texto alternativo. -->
-        <img
-          src="/images/foro.svg"
-          alt="Estudiantes presentando sus investigaciones durante el FEICS (imagen placeholder)"
-          class="w-full rounded-2xl border border-navy/10"
-          width="800"
-          height="600"
-          loading="lazy"
-        />
+        <div class="rounded-2xl border-2 border-gold/50 p-2">
+          <Image
+            src={fotoForo}
+            alt="Estudiante presentando su cartel científico ante el público durante el FEICS 2025"
+            class="w-full rounded-xl"
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            format="webp"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-center text-sm text-secondary">
+          Presentación de cartel durante el FEICS 2025.
+        </figcaption>
       </figure>
     </div>
   </div>

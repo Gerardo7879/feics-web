@@ -5,18 +5,21 @@
 import { SITE } from '../config';
 
 const links = [
-  { href: '#inicio', label: 'Inicio' },
-  { href: '#que-es', label: '¿Qué es?' },
-  { href: '#programa', label: 'Programa' },
-  { href: '#galeria', label: 'Galería' },
+  { href: '#que-es', label: 'El foro' },
+  { href: '#ejes', label: 'Ejes' },
+  { href: '#convocatoria', label: 'Convocatoria' },
+  { href: '#comite', label: 'Comité' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#contacto', label: 'Contacto' },
 ];
 ---
 
 <header class="fixed inset-x-0 top-0 z-40 border-b border-navy/10 bg-cream/90 backdrop-blur">
   <nav aria-label="Navegación principal" class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-    <a href="#inicio" class="font-heading text-lg font-bold uppercase tracking-brand text-navy">
-      FEICS
+    <a href="#inicio" class="flex items-center gap-2.5 font-heading text-lg font-bold uppercase tracking-brand text-navy">
+      <img src="/logos/logo-feics-f.png" alt="" width="286" height="332" class="h-8 w-auto" />
+      <span>FEICS</span>
+      <span class="sr-only">— ir al inicio</span>
     </a>
 
     <!-- Enlaces (escritorio) -->

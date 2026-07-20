@@ -1,0 +1,74 @@
+---
+/**
+ * Comité Organizador del foro (CABMT y MIC) y bloque del Comité
+ * Estudiantil. [PENDIENTE: integrantes estudiantiles por definir y aprobar]
+ */
+import SectionTitle from './SectionTitle.astro';
+
+const directiva = [
+  { nombre: 'Dr. Marco Antonio Hernández Luna', cargo: 'Presidente', iniciales: 'MH' },
+  { nombre: 'Dr. Sergio López Briones', cargo: 'Secretario', iniciales: 'SL' },
+] as const;
+
+const vocales = [
+  { nombre: 'Dra. Esmeralda Rodríguez Miranda', iniciales: 'ER' },
+  { nombre: 'Dra. Mayra Remedios Montecillo Aguado', iniciales: 'MM' },
+  { nombre: 'Dra. Rebeca Monroy Torres', iniciales: 'RM' },
+  { nombre: 'Dr. Benigno Linares Segovia', iniciales: 'BL' },
+  { nombre: 'Dr. José A. de Jesús Álvarez Canales', iniciales: 'JA' },
+] as const;
+---
+
+<section id="comite" class="scroll-mt-20 bg-card py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Organización">
+      Comité <span class="text-gold-dark">Organizador</span>
+    </SectionTitle>
+
+    <p class="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-secondary">
+      El FEICS es organizado por miembros del Cuerpo Académico en Biomedicina
+      Traslacional (CABMT) y de la Maestría en Investigación Clínica (MIC).
+    </p>
+
+    <!-- Presidencia y secretaría -->
+    <ul class="mx-auto mt-12 grid max-w-2xl gap-6 sm:grid-cols-2" role="list">
+      {
+        directiva.map((persona) => (
+          <li class="rounded-2xl border border-gold/40 bg-cream p-7 text-center">
+            <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-navy font-heading text-xl font-bold text-gold" aria-hidden="true">
+              {persona.iniciales}
+            </span>
+            <h3 class="mt-4 font-semibold text-navy">{persona.nombre}</h3>
+            <p class="mt-1 text-sm font-semibold uppercase tracking-widest text-gold-dark">{persona.cargo}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Vocales -->
+    <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      {
+        vocales.map((persona) => (
+          <li class="rounded-2xl border border-navy/10 bg-cream p-6 text-center">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy font-heading font-bold text-gold" aria-hidden="true">
+              {persona.iniciales}
+            </span>
+            <h3 class="mt-3 font-semibold text-navy">{persona.nombre}</h3>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">Vocal</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Comité Estudiantil -->
+    <div class="mx-auto mt-12 max-w-2xl rounded-2xl border border-dashed border-gold/50 bg-cream px-8 py-12 text-center">
+      <h3 class="font-heading text-xl font-semibold text-navy">Comité Estudiantil</h3>
+      <span class="mt-4 inline-block rounded-full bg-gold/15 px-4 py-1.5 text-sm font-bold uppercase tracking-brand text-gold-dark">
+        Próximamente
+      </span>
+      <p class="mt-4 leading-relaxed text-secondary">
+        Muy pronto anunciaremos a las y los integrantes del Comité Estudiantil del foro.
+      </p>
+    </div>
+  </div>
+</section>

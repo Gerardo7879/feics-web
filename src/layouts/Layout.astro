@@ -16,12 +16,20 @@ const ogImageUrl = new URL('/og.png', Astro.site).href;
 const eventSchema = {
   '@context': 'https://schema.org',
   '@type': 'Event',
-  name: 'FEICS — Foro Estudiantil de Investigación en Ciencias de la Salud',
+  name: `${SITE.eventName} (${SITE.eventShortName})`,
   description: SITE.description,
   startDate: SITE.eventStartDateTime,
   endDate: SITE.eventDateISO,
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'MXN',
+    availability: 'https://schema.org/InStock',
+    url: SITE.formUrl,
+  },
   image: [ogImageUrl],
   url: canonicalUrl,
   location: {
@@ -52,7 +60,8 @@ const eventSchema = {
     <title>{SITE.title}</title>
     <meta name="description" content={SITE.description} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

@@ -1,25 +1,94 @@
 ---
 /**
- * Galería de ediciones pasadas. Estado actual: "Próximamente".
- * [EDITAR] Cuando tengas fotografías reales (public/images/galeria-N.jpg),
- * restaura el grid de imágenes con un alt descriptivo por foto.
+ * Galería del FEICS 2025 con lightbox accesible (dialog nativo).
+ * Para agregar fotos: colócalas en src/assets/ y súmalas al arreglo.
  */
+import { Image } from 'astro:assets';
 import SectionTitle from './SectionTitle.astro';
+import foto1 from '../assets/feics-2025-01.jpg';
+import foto2 from '../assets/feics-2025-02.jpg';
+
+const fotos = [
+  {
+    src: foto1,
+    alt: 'Estudiantes conversando junto a los carteles científicos durante el FEICS 2025',
+  },
+  {
+    src: foto2,
+    alt: 'Estudiante presentando su cartel científico ante el público en el FEICS 2025',
+  },
+] as const;
 ---
 
-<section id="galeria" class="scroll-mt-20 bg-card py-20 md:py-28">
+<section id="galeria" class="scroll-mt-20 py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <SectionTitle eyebrow="Memorias">
-      Ediciones <span class="text-gold-dark">pasadas</span>
+      FEICS <span class="text-gold-dark">2025</span>
     </SectionTitle>
 
-    <div class="mx-auto mt-14 max-w-2xl rounded-2xl border border-dashed border-gold/50 bg-cream px-8 py-14 text-center">
-      <span class="inline-block rounded-full bg-gold/15 px-4 py-1.5 text-sm font-bold uppercase tracking-brand text-gold-dark">
-        Próximamente
-      </span>
-      <p class="mt-5 text-lg leading-relaxed text-secondary">
-        Estamos preparando la galería con fotografías de ediciones anteriores del foro.
-      </p>
-    </div>
+    <ul class="mt-14 grid gap-6 sm:grid-cols-2" role="list">
+      {
+        fotos.map((foto, indice) => (
+          <li>
+            <button
+              type="button"
+              class="group block w-full overflow-hidden rounded-2xl border border-navy/10"
+              data-abrir-foto={indice}
+              aria-label={`Ampliar fotografía: ${foto.alt}`}
+            >
+              <Image
+                src={foto.src}
+                alt={foto.alt}
+                class="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 640px) 50vw, 100vw"
+                format="webp"
+                loading="lazy"
+              />
+            </button>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>
+
+<!-- Lightbox: dialog nativo (Esc cierra, foco atrapado por el navegador) -->
+<dialog
+  id="lightbox"
+  class="m-auto max-h-[92vh] w-[min(64rem,94vw)] rounded-2xl bg-navy p-3 backdrop:bg-navy/80"
+>
+  <button
+    type="button"
+    id="lightbox-cerrar"
+    class="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-cream text-navy"
+    aria-label="Cerrar imagen ampliada"
+  >
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-h-[85vh] w-full rounded-xl object-contain" />
+</dialog>
+
+<script>
+  const lightbox = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const imagenAmpliada = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const botonCerrar = document.getElementById('lightbox-cerrar');
+
+  document.querySelectorAll<HTMLButtonElement>('[data-abrir-foto]').forEach((boton) => {
+    boton.addEventListener('click', () => {
+      const miniatura = boton.querySelector('img');
+      if (!lightbox || !imagenAmpliada || !miniatura) return;
+      imagenAmpliada.src = miniatura.currentSrc || miniatura.src;
+      imagenAmpliada.alt = miniatura.alt;
+      lightbox.showModal();
+    });
+  });
+
+  botonCerrar?.addEventListener('click', () => lightbox?.close());
+  // Clic fuera de la imagen cierra el lightbox
+  lightbox?.addEventListener('click', (evento) => {
+    if (evento.target === lightbox) lightbox.close();
+  });
+</script>

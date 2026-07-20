@@ -1,20 +1,21 @@
 ---
 /**
- * Sede y fecha del foro. Los datos se editan en src/config.ts.
+ * Sede, fecha y "Cómo llegar" con mapa embebido del Campus León.
+ * Los datos se editan en src/config.ts.
  */
 import { SITE } from '../config';
 import SectionTitle from './SectionTitle.astro';
 ---
 
-<section id="sede" class="scroll-mt-20 py-20 md:py-28">
+<section id="sede" class="scroll-mt-20 bg-card py-20 md:py-28">
   <div class="mx-auto max-w-4xl px-4 sm:px-6">
     <SectionTitle eyebrow="Te esperamos">
       Sede y <span class="text-gold-dark">fecha</span>
     </SectionTitle>
 
     <div class="mt-14 grid gap-6 sm:grid-cols-2">
-      <div class="rounded-2xl border border-navy/10 bg-card p-8 text-center">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+      <div class="rounded-2xl border border-navy/10 bg-cream p-8 text-center">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-card text-gold-dark" aria-hidden="true">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="5" width="18" height="16" rx="2" />
             <path d="M3 10h18M8 3v4m8-4v4" />
@@ -26,8 +27,8 @@ import SectionTitle from './SectionTitle.astro';
         </p>
       </div>
 
-      <div class="rounded-2xl border border-navy/10 bg-card p-8 text-center">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+      <div class="rounded-2xl border border-navy/10 bg-cream p-8 text-center">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-card text-gold-dark" aria-hidden="true">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" />
             <circle cx="12" cy="10" r="2.5" />
@@ -37,6 +38,21 @@ import SectionTitle from './SectionTitle.astro';
         <p class="mt-2 text-secondary">{SITE.venue.name}</p>
         <p class="mt-1 text-sm text-secondary">{SITE.venue.detail}</p>
         <p class="mt-1 text-sm text-secondary">{SITE.venue.city}</p>
+      </div>
+    </div>
+
+    <!-- Cómo llegar -->
+    <div class="mt-10">
+      <h3 class="text-center font-heading text-xl font-semibold text-navy">Cómo llegar</h3>
+      <div class="mt-5 overflow-hidden rounded-2xl border border-navy/10">
+        <iframe
+          src={SITE.venue.mapEmbedUrl}
+          title="Mapa de ubicación de la Universidad de Guanajuato, Campus León"
+          class="h-80 w-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>

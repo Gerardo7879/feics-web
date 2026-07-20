@@ -1,66 +1,146 @@
 ---
 /**
- * Convocatoria: pasos para enviar carteles/trabajos y botón al Google Form.
+ * Convocatoria: lineamientos oficiales para el envío de trabajos libres.
+ * Única modalidad: cartel científico con defensa oral.
  */
+import { Image } from 'astro:assets';
 import { SITE } from '../config';
-import ContourLines from './ContourLines.astro';
+import fotoCarteles from '../assets/feics-2025-01.jpg';
 
-const pasos = [
+const lineamientos = [
   {
-    titulo: 'Prepara tu resumen',
-    detalle:
-      'Redacta el resumen de tu trabajo o cartel según los lineamientos de la convocatoria (extensión, formato y eje temático).',
+    titulo: '1. Modalidades',
+    puntos: [
+      'Trabajos de investigación: básicos o clínicos, con objetivos, metodología y resultados. Se aceptan protocolos de investigación en curso.',
+      'Reportes de caso clínico: de interés para las ciencias de la salud, con una breve revisión de la literatura.',
+    ],
   },
   {
-    titulo: 'Envía tu trabajo',
-    detalle:
-      'Completa el formulario y adjunta tu resumen antes de la fecha límite.',
+    titulo: '2. Requisitos del resumen',
+    puntos: [
+      'Idioma español, en documento Word (.docx), fuente Arial 11, alineación justificada.',
+      'Extensión máxima: 400 palabras (sin contar título, autores y adscripción).',
+      'Título en negritas, máximo 20 palabras, sin abreviaturas.',
+      'Máximo 5 autores, en formato "Apellidos, Nombre(s)", indicando la adscripción de cada autor (departamento o licenciatura e institución) y el correo electrónico del autor de correspondencia.',
+      'Estructura con encabezados en negritas: Introducción, Objetivos, Metodología (o Descripción del caso), Resultados y Discusión, y Conclusiones.',
+      'Sin faltas de ortografía ni de gramática; los errores graves o recurrentes podrán ser motivo de no aceptación.',
+      'No mencionar la institución ni datos que identifiquen a los autores en el cuerpo del resumen: la evaluación es anónima.',
+      'En investigación clínica o en modelos animales, incluir el número de aprobación del Comité de Ética en Investigación correspondiente.',
+    ],
   },
   {
-    titulo: 'Recibe tu dictamen',
-    detalle:
-      'El comité científico evaluará tu trabajo y te notificará por correo si fue aceptado como presentación oral o cartel.',
+    titulo: '3. Envío y dictamen',
+    puntos: [
+      `Envía el resumen al correo ${SITE.contactEmail} antes del ${SITE.abstractDeadline}, ${SITE.abstractDeadlineTime}. Se confirmará la recepción con un número de registro.`,
+      'Dos revisores del Comité Científico evalúan cada resumen de forma independiente y anónima, conforme a la rúbrica oficial (máximo 30 puntos).',
+      'El trabajo que obtenga 70% o más (21.0 puntos o más en promedio) será Aceptado para presentación oral de cartel científico. El dictamen es definitivo y se notificará por correo al autor de correspondencia.',
+    ],
+  },
+  {
+    titulo: '4. Del cartel científico',
+    puntos: [
+      'Medidas: 90 × 120 cm, orientación vertical, legible a un metro de distancia.',
+      'Título en negritas y mayúsculas; máximo 20 palabras.',
+      'Autores: apellidos seguidos del nombre(s); adscripción al pie.',
+      'Secciones: Introducción, Objetivos, Metodología / Descripción del caso, Resultados y Discusión, Conclusiones y Referencias (formato Vancouver).',
+      'El contenido del cartel debe corresponder al resumen aceptado.',
+    ],
+  },
+  {
+    titulo: '5. Presentación oral',
+    puntos: [
+      'Podrán presentar y defender el trabajo hasta 4 autores; se recomienda que sean 2. Todos los autores podrán estar presentes.',
+      'Presentación de 5 a 10 minutos cronometrados; réplica de 3 a 5 minutos de preguntas del jurado.',
+      'La fecha y hora de presentación se notificarán con anticipación al autor de correspondencia.',
+    ],
+  },
+  {
+    titulo: '6. Premiación y consideraciones finales',
+    puntos: [
+      'Se premiarán los tres primeros lugares de cada categoría según la calificación final del jurado.',
+      'No se aceptarán trabajos ya publicados o aceptados para publicación, ni enviados fuera del plazo o por un medio distinto al oficial.',
+      'El plagio o la fabricación de datos descalifica el trabajo de forma inmediata. El uso de inteligencia artificial en la redacción debe ser declarado.',
+      'Al enviar su resumen, los autores aceptan las reglas descritas en estos lineamientos.',
+    ],
   },
 ] as const;
 ---
 
-<section id="convocatoria" class="relative scroll-mt-20 overflow-hidden bg-navy py-20 text-white md:py-28">
-  <ContourLines class="right-0 top-0 -translate-y-1/3 translate-x-1/3" />
+<section id="convocatoria" class="scroll-mt-20">
+  <!-- Banda con fotografía del FEICS 2025 y overlay marino -->
+  <div class="relative overflow-hidden bg-navy text-white">
+    <Image
+      src={fotoCarteles}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover"
+      widths={[800, 1600]}
+      sizes="100vw"
+      format="webp"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-navy/85" aria-hidden="true"></div>
 
-  <div class="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
-    <p class="text-sm font-semibold uppercase tracking-brand text-gold">Convocatoria</p>
-    <h2 class="mt-3 font-heading text-3xl font-semibold md:text-4xl">
-      Presenta tu <span class="text-gold">investigación</span>
-    </h2>
-    <div class="mx-auto mt-5 h-0.5 w-16 rounded-full bg-gold" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 md:py-28">
+      <p class="text-sm font-semibold uppercase tracking-brand text-gold">Convocatoria</p>
+      <h2 class="mt-3 font-heading text-3xl font-semibold md:text-4xl">
+        Lineamientos para el envío de <span class="text-gold">trabajos libres</span>
+      </h2>
+      <div class="mx-auto mt-5 h-0.5 w-16 rounded-full bg-gold" aria-hidden="true"></div>
 
-    <!-- [EDITAR] fecha límite de envío cuando se defina -->
-    <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-white/80">
-      La convocatoria para enviar carteles y trabajos libres está abierta.{' '}
-      Fecha límite de envío: <strong class="text-gold">próximamente</strong>.
-    </p>
+      <p class="mx-auto mt-6 max-w-2xl leading-relaxed text-white/85">
+        El {SITE.eventShortName} invita a estudiantes y profesionales de las
+        licenciaturas en Medicina, Nutrición, Enfermería, Ciencias Biomédicas y
+        CAFYD, entre otras áreas de la salud, a enviar sus trabajos libres.
+        Todos los trabajos aceptados se presentarán en modalidad de{' '}
+        <strong class="text-gold">cartel científico con defensa oral</strong>.
+      </p>
 
-    <ol class="mt-14 grid gap-6 text-left sm:grid-cols-3">
-      {
-        pasos.map((paso, indice) => (
-          <li class="rounded-2xl border border-white/15 p-7">
-            <span class="font-heading text-3xl font-bold text-gold" aria-hidden="true">
-              {String(indice + 1).padStart(2, '0')}
-            </span>
-            <h3 class="mt-4 text-lg font-semibold">{paso.titulo}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-white/75">{paso.detalle}</p>
-          </li>
-        ))
-      }
-    </ol>
+      <p class="mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-5 py-2 text-sm font-semibold">
+        <svg class="h-4 w-4 text-gold" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm1-12a1 1 0 1 0-2 0v4c0 .3.1.5.3.7l2.8 2.9a1 1 0 0 0 1.4-1.4L11 9.6V6Z" clip-rule="evenodd" />
+        </svg>
+        Fecha límite: {SITE.abstractDeadline} · {SITE.abstractDeadlineTime}
+      </p>
 
-    <a
-      href={SITE.trabajosFormUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="mt-12 inline-block rounded-full bg-gold px-10 py-4 font-bold text-navy transition-colors hover:bg-cream"
-    >
-      Enviar mi trabajo
-    </a>
+      <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href={`mailto:${SITE.contactEmail}?subject=Env%C3%ADo%20de%20trabajo%20libre%20%E2%80%94%20IV%20FEICS-UG`}
+          class="rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream"
+        >
+          Enviar mi trabajo a {SITE.contactEmail}
+        </a>
+        <!-- [PENDIENTE: subir los lineamientos en PDF a public/ y activar este botón]
+        <a href="/lineamientos-feics.pdf" class="rounded-full border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-colors hover:border-gold hover:text-gold">
+          Descargar lineamientos (PDF)
+        </a>
+        -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalle de los lineamientos -->
+  <div class="bg-card py-16 md:py-24">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          lineamientos.map((bloque) => (
+            <article class="rounded-2xl border border-navy/10 bg-cream p-7">
+              <h3 class="font-heading text-lg font-semibold text-navy">{bloque.titulo}</h3>
+              <ul class="mt-4 space-y-2.5" role="list">
+                {bloque.puntos.map((punto) => (
+                  <li class="flex gap-2.5 text-sm leading-relaxed text-secondary">
+                    <svg class="mt-1 h-3.5 w-3.5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                    {punto}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>

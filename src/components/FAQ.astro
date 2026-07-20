@@ -1,41 +1,45 @@
 ---
 /**
- * Preguntas frecuentes con acordeones nativos (details/summary) y
- * datos estructurados FAQPage. [EDITAR] Completa las respuestas
- * marcadas "se anunciará" cuando el comité defina esos detalles.
+ * Preguntas frecuentes oficiales con acordeones nativos (details/summary)
+ * navegables por teclado y datos estructurados FAQPage.
  */
 import { SITE } from '../config';
 import SectionTitle from './SectionTitle.astro';
 
 const preguntas = [
   {
-    pregunta: '¿Quién puede asistir al foro?',
-    respuesta:
-      'Estudiantes de ciencias de la salud y comunidad académica interesada en la investigación. El foro es organizado por la División de Ciencias de la Salud (Departamento de Medicina y Nutrición) de la Universidad de Guanajuato, Campus León.',
+    pregunta: '¿Tiene costo asistir o participar?',
+    respuesta: 'No. El foro es completamente gratuito: no hay cuota de asistencia ni de participación.',
   },
   {
-    pregunta: '¿Cómo me registro?',
+    pregunta: '¿Quién puede enviar trabajos?',
     respuesta:
-      'Con el botón "Registrarme" de esta página, que te lleva al formulario de registro en línea. El registro se confirma por correo electrónico.',
+      'Estudiantes y profesionales de licenciaturas en Medicina, Nutrición, Enfermería, Ciencias Biomédicas, CAFYD y otras áreas de la salud.',
   },
   {
-    pregunta: '¿Cómo envío un cartel o trabajo libre?',
-    respuesta:
-      'En la sección "Convocatoria" encontrarás el botón "Enviar mi trabajo" con el formulario de envío. Los lineamientos completos (extensión, formato y ejes temáticos) y la fecha límite se anunciarán en esta misma página.',
+    pregunta: '¿Cuál es la fecha límite para enviar mi resumen?',
+    respuesta: `El ${SITE.abstractDeadline} a las ${SITE.abstractDeadlineTime}, al correo ${SITE.contactEmail}.`,
   },
   {
-    pregunta: '¿El evento tiene costo?',
-    respuesta:
-      'Los detalles de inscripción y costos se anunciarán próximamente en esta página y en la convocatoria oficial.',
+    pregunta: '¿En qué modalidad se presenta?',
+    respuesta: 'Cartel científico con defensa oral. Es la única modalidad de presentación.',
   },
   {
-    pregunta: '¿Dónde y cuándo será?',
-    respuesta: `El ${SITE.eventDate} en la ${SITE.venue.name}, ${SITE.venue.city}. El auditorio exacto se anunciará próximamente.`,
+    pregunta: '¿Cuánto dura la presentación?',
+    respuesta: 'De 5 a 10 minutos, más 3 a 5 minutos de preguntas del jurado.',
   },
   {
-    pregunta: '¿Se entregará constancia de participación?',
+    pregunta: '¿Cuántos autores puede tener un trabajo?',
+    respuesta: 'Máximo 5 autores; hasta 4 pueden presentar y defender el cartel.',
+  },
+  {
+    pregunta: '¿Se puede enviar un protocolo en curso?',
+    respuesta: 'Sí, se aceptan protocolos de investigación en curso.',
+  },
+  {
+    pregunta: '¿Cómo sé si mi trabajo fue aceptado?',
     respuesta:
-      'La información sobre constancias se anunciará junto con el programa final del foro.',
+      'Se notifica por correo al autor de correspondencia. Se acepta con 21.0 puntos o más de 30, conforme a la rúbrica oficial.',
   },
 ] as const;
 
@@ -50,7 +54,7 @@ const faqSchema = {
 };
 ---
 
-<section id="faq" class="scroll-mt-20 bg-card py-20 md:py-28">
+<section id="faq" class="scroll-mt-20 py-20 md:py-28">
   <div class="mx-auto max-w-3xl px-4 sm:px-6">
     <SectionTitle eyebrow="Dudas">
       Preguntas <span class="text-gold-dark">frecuentes</span>
@@ -59,7 +63,7 @@ const faqSchema = {
     <div class="mt-14 space-y-4">
       {
         preguntas.map((item) => (
-          <details class="group rounded-2xl border border-navy/10 bg-cream px-6 py-4">
+          <details class="group rounded-2xl border border-navy/10 bg-card px-6 py-4">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-navy [&::-webkit-details-marker]:hidden">
               {item.pregunta}
               <svg

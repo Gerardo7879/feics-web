@@ -1,7 +1,7 @@
 ---
 /**
- * Sección de bienvenida: logo, lema con palabras alternadas
- * marino/dorado y botones de acción.
+ * Sección de bienvenida: logo oficial, nombre de la edición, lema con
+ * palabras alternadas marino/dorado, cuenta regresiva y botones de acción.
  */
 import { SITE } from '../config';
 import ContourLines from './ContourLines.astro';
@@ -11,39 +11,52 @@ import ContourLines from './ContourLines.astro';
   <ContourLines class="right-0 top-0 -translate-y-1/4 translate-x-1/4" />
   <ContourLines class="bottom-0 left-0 translate-y-1/4 -translate-x-1/4 rotate-180" />
 
-  <div class="relative mx-auto flex max-w-4xl flex-col items-center px-4 pb-24 pt-36 text-center sm:px-6 md:pb-32 md:pt-44">
-    <!-- Logo / emblema FEICS -->
-    <svg class="h-24 w-24 md:h-28 md:w-28" viewBox="0 0 96 96" fill="none" role="img" aria-label="Logotipo del FEICS">
-      <circle cx="48" cy="48" r="45" stroke="#c08a2d" stroke-width="2.5" />
-      <circle cx="48" cy="48" r="37" fill="#1b2a4d" />
-      <path
-        d="M24 50h11l5-12 8 22 6-16 4 6h14"
-        stroke="#c08a2d"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+  <!-- Isotipo "F" como marca de agua sutil -->
+  <img
+    src="/logos/logo-feics-f.png"
+    alt=""
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-16 top-1/2 hidden w-[26rem] -translate-y-1/2 opacity-[0.05] lg:block"
+  />
 
-    <p class="mt-8 font-heading text-sm font-bold uppercase tracking-brand text-secondary">
-      FEICS
-    </p>
+  <div class="relative mx-auto flex max-w-4xl flex-col items-center px-4 pb-24 pt-32 text-center sm:px-6 md:pb-32 md:pt-40">
+    <!-- Logo oficial FEICS -->
+    <img
+      src="/logos/logo-feics-completo.png"
+      alt="Logotipo del FEICS: isotipo en forma de F en azul marino y dorado sobre las siglas FEICS"
+      width="431"
+      height="427"
+      class="h-32 w-auto md:h-40"
+      fetchpriority="high"
+    />
 
-    <!-- Badge de fecha y sede -->
-    <p class="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-sm font-medium text-navy">
-      <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd" />
-      </svg>
-      <time datetime={SITE.eventDateISO}>{SITE.eventDate}</time>
-      <span aria-hidden="true">·</span>
-      <span>Campus León, UG</span>
-    </p>
+    <!-- Badges: fecha/sede + evento gratuito -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <p class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-sm font-medium text-navy">
+        <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd" />
+        </svg>
+        <time datetime={SITE.eventDateISO}>{SITE.eventDate}</time>
+        <span aria-hidden="true">·</span>
+        <span>Campus León, UG</span>
+      </p>
+      <p class="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-1.5 text-sm font-semibold text-navy">
+        Evento gratuito
+      </p>
+    </div>
 
-    <h1 class="mt-4 font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
+    <h1 class="mt-6 font-heading text-3xl font-bold leading-tight text-navy sm:text-4xl md:text-5xl">
+      {SITE.eventName}
+      <span class="mt-2 block text-xl font-semibold text-gold-dark sm:text-2xl">
+        {SITE.eventShortName}
+      </span>
+    </h1>
+
+    <p class="mt-5 font-heading text-lg font-semibold sm:text-xl">
       <span class="text-navy">Investigación.</span>{' '}
       <span class="text-gold-dark">Innovación.</span>{' '}
       <span class="text-navy">Impacto.</span>
-    </h1>
+    </p>
 
     <!-- Cuenta regresiva al inicio del foro -->
     <!-- `invisible` (no `hidden`) para reservar el espacio y evitar
@@ -72,10 +85,6 @@ import ContourLines from './ContourLines.astro';
       }
     </div>
 
-    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-secondary">
-      Bienvenidos al Foro Estudiantil de Investigación en Ciencias de la Salud.
-    </p>
-
     <div class="mt-10 flex flex-col gap-4 sm:flex-row">
       <a
         href={SITE.formUrl}
@@ -86,10 +95,10 @@ import ContourLines from './ContourLines.astro';
         Registrarme
       </a>
       <a
-        href="#que-es"
+        href="#convocatoria"
         class="rounded-full border-2 border-navy px-8 py-3.5 font-semibold text-navy transition-colors hover:border-gold-dark hover:text-gold-dark"
       >
-        Conoce más
+        Enviar un trabajo
       </a>
     </div>
   </div>

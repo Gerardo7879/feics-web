@@ -1,0 +1,62 @@
+---
+/**
+ * Participación y costos: el foro es gratuito, se entrega gafete a los
+ * participantes y va dirigido a estudiantes y profesionales de la salud.
+ */
+import SectionTitle from './SectionTitle.astro';
+---
+
+<section id="participacion" class="scroll-mt-20 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Participa">
+      Participación y <span class="text-gold-dark">costos</span>
+    </SectionTitle>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <!-- Tarjeta destacada: evento gratuito -->
+      <div class="rounded-2xl border-2 border-gold bg-gold/10 p-8 text-center">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M14.8 9.2c-.5-.8-1.6-1.2-2.8-1.2-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.2 0-2.3-.4-2.8-1.2M12 6.5V8m0 8v1.5" />
+          </svg>
+        </span>
+        <h3 class="mt-4 text-lg font-semibold text-navy">Evento gratuito</h3>
+        <p class="mt-2 text-sm leading-relaxed text-secondary">
+          Sin costo de asistencia ni de participación. No hay cuota de
+          inscripción para ninguna actividad del foro.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-navy/10 bg-card p-8 text-center">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="4" width="12" height="17" rx="2" />
+            <path d="M10 2h4v4h-4zM9 11h6M9 15h4" />
+          </svg>
+        </span>
+        <h3 class="mt-4 text-lg font-semibold text-navy">Gafete de participante</h3>
+        <p class="mt-2 text-sm leading-relaxed text-secondary">
+          A las y los participantes se les entrega un gafete que los acredita
+          durante el foro.
+          <!-- [PENDIENTE: confirmar si hay constancia además del gafete] -->
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-navy/10 bg-card p-8 text-center">
+        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="8" r="3.5" />
+            <path d="M3 20v-1a6 6 0 0 1 12 0v1" />
+            <path d="M16 4.5a3.5 3.5 0 0 1 0 7M17.5 13.5a6 6 0 0 1 3.5 5.5v1" />
+          </svg>
+        </span>
+        <h3 class="mt-4 text-lg font-semibold text-navy">¿A quién va dirigido?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-secondary">
+          Estudiantes y profesionales de Medicina, Nutrición, Enfermería,
+          Ciencias Biomédicas, CAFYD y áreas afines de la salud.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
