@@ -6,29 +6,6 @@
 import { Image } from 'astro:assets';
 import { SITE } from '../config';
 import fotoCarteles from '../assets/feics-2025-01.jpg';
-
-const requisitos = [
-  {
-    titulo: 'Del resumen',
-    puntos: [
-      'Formato Word (.docx), fuente Arial 11, alineación justificada.',
-      'Extensión máxima de 400 palabras.',
-      'Título en negritas, máximo 20 palabras.',
-      'Máximo 5 autores, con adscripción y correo del autor de correspondencia.',
-      'Estructura con encabezados: Introducción, Objetivos, Metodología (o Descripción del caso), Resultados y Discusión, Conclusiones.',
-      'Evaluación anónima: no mencionar institución ni datos identificables.',
-      'Número de aprobación del Comité de Ética en Investigación, cuando aplique.',
-    ],
-  },
-  {
-    titulo: 'Del cartel',
-    puntos: [
-      'Modalidad: cartel científico con defensa oral.',
-      'Medidas: 90 × 120 cm, orientación vertical.',
-      'Legible a un metro de distancia.',
-    ],
-  },
-] as const;
 ---
 
 <section id="convocatoria" class="scroll-mt-20">
@@ -70,59 +47,24 @@ const requisitos = [
 
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a
+          href="/lineamientos-trabajos-libres-iv-feics.pdf"
+          download
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-colors hover:border-gold hover:text-gold"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+          </svg>
+          Descargar lineamientos (PDF)
+        </a>
+        <a
           href={`mailto:${SITE.contactEmail}?subject=Env%C3%ADo%20de%20trabajo%20libre%20%E2%80%94%20IV%20FEICS-UG`}
           class="rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream"
         >
           Enviar mi trabajo a {SITE.contactEmail}
         </a>
       </div>
-    </div>
-  </div>
-
-  <!-- Requisitos de participación: bloque único (resumen + cartel), sin duplicar criterios -->
-  <div class="bg-card py-16 md:py-24">
-    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
-      <h3 class="font-heading text-xl font-semibold text-navy">Requisitos de participación</h3>
-
-      <div class="mx-auto mt-6 grid gap-6 text-left sm:grid-cols-2">
-        {
-          requisitos.map((bloque) => (
-            <article class="rounded-2xl border border-navy/10 bg-cream p-7">
-              <h4 class="font-heading text-base font-semibold text-navy">{bloque.titulo}</h4>
-              <ul class="mt-4 space-y-2.5" role="list">
-                {bloque.puntos.map((punto) => (
-                  <li class="flex gap-2.5 text-sm leading-relaxed text-secondary">
-                    <svg class="mt-1 h-3.5 w-3.5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
-                    {punto}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))
-        }
-      </div>
-
-      <a
-        href="/lineamientos-trabajos-libres-iv-feics.pdf"
-        download
-        target="_blank"
-        rel="noopener"
-        class="mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-8 py-3.5 font-semibold text-white transition-colors hover:bg-secondary"
-      >
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-        </svg>
-        Descargar lineamientos (PDF)
-      </a>
-
-      <p class="mt-6 text-sm text-secondary">
-        ¿Dudas sobre los lineamientos? Escríbenos a{' '}
-        <a href={`mailto:${SITE.contactEmail}`} class="font-medium text-gold-dark underline-offset-4 hover:underline">
-          {SITE.contactEmail}
-        </a>
-      </p>
     </div>
   </div>
 </section>
