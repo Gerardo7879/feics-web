@@ -7,14 +7,26 @@ import { Image } from 'astro:assets';
 import { SITE } from '../config';
 import fotoCarteles from '../assets/feics-2025-01.jpg';
 
-const datosClave = [
+const requisitos = [
   {
-    texto: 'Cartel científico con defensa oral',
-    icono: 'M4 4h16v12H4z M9 20h6M12 16v4',
+    titulo: 'Del resumen',
+    puntos: [
+      'Formato Word (.docx), fuente Arial 11, alineación justificada.',
+      'Extensión máxima de 400 palabras.',
+      'Título en negritas, máximo 20 palabras.',
+      'Máximo 5 autores, con adscripción y correo del autor de correspondencia.',
+      'Estructura con encabezados: Introducción, Objetivos, Metodología (o Descripción del caso), Resultados y Discusión, Conclusiones.',
+      'Evaluación anónima: no mencionar institución ni datos identificables.',
+      'Número de aprobación del Comité de Ética en Investigación, cuando aplique.',
+    ],
   },
   {
-    texto: 'Medidas: 90 × 120 cm, orientación vertical',
-    icono: 'M6 3h9l3 3v15H6V3z M15 3v3h3',
+    titulo: 'Del cartel',
+    puntos: [
+      'Modalidad: cartel científico con defensa oral.',
+      'Medidas: 90 × 120 cm, orientación vertical.',
+      'Legible a un metro de distancia.',
+    ],
   },
 ] as const;
 ---
@@ -45,9 +57,8 @@ const datosClave = [
         El {SITE.eventShortName} invita a estudiantes y profesionales de las
         licenciaturas en Medicina, Nutrición, Enfermería, Ciencias Biomédicas,
         Psicología y CAFYS (Ciencias de la Actividad Física y Salud), entre
-        otras áreas de la salud, a enviar sus trabajos libres.
-        Todos los trabajos aceptados se presentarán en modalidad de{' '}
-        <strong class="text-gold">cartel científico con defensa oral</strong>.
+        otras áreas de la salud, a enviar trabajos de investigación o
+        reportes de caso clínico como trabajos libres.
       </p>
 
       <p class="mt-6 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-gold/50 bg-gold/15 px-5 py-2 text-sm font-semibold">
@@ -68,42 +79,30 @@ const datosClave = [
     </div>
   </div>
 
-  <!-- Resumen compacto de los lineamientos -->
+  <!-- Requisitos de participación: bloque único (resumen + cartel), sin duplicar criterios -->
   <div class="bg-card py-16 md:py-24">
-    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
-      <h3 class="font-heading text-xl font-semibold text-navy">Resumen de los lineamientos</h3>
-      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-secondary">
-        Se aceptan trabajos de investigación y reportes de caso clínico,
-        dictaminados de forma anónima por el Comité Científico. Los trabajos
-        aceptados se presentan como cartel científico con defensa oral ante un
-        jurado. El documento completo detalla requisitos del resumen, formato
-        del cartel y criterios de evaluación.
-      </p>
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6">
+      <h3 class="font-heading text-xl font-semibold text-navy">Requisitos de participación</h3>
 
-      <ul class="mx-auto mt-8 flex max-w-2xl flex-wrap items-stretch justify-center gap-4" role="list">
+      <div class="mx-auto mt-6 grid gap-6 text-left sm:grid-cols-2">
         {
-          datosClave.map((dato) => (
-            <li class="flex w-full sm:w-[calc(50%-0.5rem)]">
-              <div class="flex h-full w-full items-center gap-3 rounded-2xl border border-navy/10 bg-cream p-5 text-left">
-                <svg class="h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d={dato.icono} />
-                </svg>
-                <p class="text-sm font-semibold text-navy">{dato.texto}</p>
-              </div>
-            </li>
+          requisitos.map((bloque) => (
+            <article class="rounded-2xl border border-navy/10 bg-cream p-7">
+              <h4 class="font-heading text-base font-semibold text-navy">{bloque.titulo}</h4>
+              <ul class="mt-4 space-y-2.5" role="list">
+                {bloque.puntos.map((punto) => (
+                  <li class="flex gap-2.5 text-sm leading-relaxed text-secondary">
+                    <svg class="mt-1 h-3.5 w-3.5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                    {punto}
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))
         }
-        <li class="flex w-full">
-          <div class="flex h-full w-full items-center gap-3 rounded-2xl border border-navy/10 bg-cream p-5 text-left">
-            <svg class="h-6 w-6 shrink-0 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm1-12a1 1 0 1 0-2 0v4c0 .3.1.5.3.7l2.8 2.9a1 1 0 0 0 1.4-1.4L11 9.6V6Z" clip-rule="evenodd" />
-            </svg>
-            <p class="text-sm font-semibold text-navy">
-              Fecha límite: {SITE.abstractDeadline} · {SITE.abstractDeadlineTime}
-            </p>
-          </div>
-        </li>
-      </ul>
+      </div>
 
       <a
         href="/lineamientos-trabajos-libres-iv-feics.pdf"
