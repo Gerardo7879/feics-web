@@ -27,13 +27,30 @@ h4 {
   @apply font-heading;
 }
 
-/* Anillo de foco visible y consistente para navegación por teclado */
+/* Anillo de foco visible y consistente para navegación por teclado.
+   Dos detalles que no son obvios:
+   1. Va sin @layer a propósito. El CSS sin capa gana a las utilidades de
+      Tailwind (que viven en @layer utilities), así que un `focus-visible:*`
+      suelto en el marcado no lo sobrescribe: para cambiar el anillo de un
+      control usa la clase .focus-ring-claro de abajo.
+   2. Los tokens de marca viven en tailwind.config.mjs y Tailwind v4 no los
+      expone como variables CSS, así que var(--color-gold) no resuelve aquí.
+      Sin el respaldo en hex la declaración es inválida en tiempo de cómputo
+      y el navegador la descarta entera, dejando outline-style en `none`
+      (o sea, sin anillo de foco en todo el sitio). */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-gold, #c08a2d);
   outline-offset: 2px;
 }
 
+/* Anillo claro para controles sobre fondo marino o dorado, donde el
+   dorado del anillo por defecto no contrasta lo suficiente. */
+.focus-ring-claro:focus-visible {
+  outline-color: #fff;
+  outline-offset: 4px;
+}
+
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-navy);
+  background-color: var(--color-gold, #c08a2d);
+  color: var(--color-navy, #1b2a4d);
 }
