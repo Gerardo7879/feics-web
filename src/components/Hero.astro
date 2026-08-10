@@ -32,13 +32,18 @@ import ContourLines from './ContourLines.astro';
 
     <!-- Badges: fecha/sede + evento gratuito -->
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <p class="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-sm font-medium text-navy">
-        <svg class="h-4 w-4 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <!--
+        En móvil la fecha y la sede se apilan dentro de la misma píldora:
+        sin `whitespace-nowrap` cada fragmento se partía por su cuenta y
+        dejaba el separador «·» huérfano entre dos columnas de texto.
+      -->
+      <p class="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-sm font-medium text-navy">
+        <svg class="h-4 w-4 shrink-0 text-gold-dark" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M6 2a1 1 0 0 0-1 1v1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1V3a1 1 0 1 0-2 0v1H7V3a1 1 0 0 0-1-1Zm0 5a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H6Z" clip-rule="evenodd" />
         </svg>
-        <time datetime={SITE.eventDateISO}>{SITE.eventDate}</time>
-        <span aria-hidden="true">·</span>
-        <span>Campus León, UG</span>
+        <time datetime={SITE.eventDateISO} class="whitespace-nowrap">{SITE.eventDate}</time>
+        <span aria-hidden="true" class="hidden sm:inline">·</span>
+        <span class="whitespace-nowrap">Campus León, UG</span>
       </p>
       <p class="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-1.5 text-sm font-semibold text-navy">
         Evento gratuito

@@ -133,7 +133,9 @@ const ediciones = anios.map((anio) => ({
       <path d="M6 6l12 12M18 6L6 18" />
     </svg>
   </button>
-  <img id="lightbox-img" src="" alt="" class="max-h-[85vh] w-full rounded-xl object-contain" />
+  <!-- Sin atributo src: con src="" el navegador pide de nuevo la propia
+       página. El script lo asigna al abrir el lightbox. -->
+  <img id="lightbox-img" alt="" class="max-h-[85vh] w-full rounded-xl object-contain" />
 </dialog>
 
 <script>
