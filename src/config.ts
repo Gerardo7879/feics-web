@@ -50,3 +50,26 @@ export const SITE = {
   description:
     'IV Foro Estudiantil de Investigación en Ciencias de la Salud (IV FEICS-UG) de la Universidad de Guanajuato, Campus León. 26 de noviembre de 2026. Evento gratuito. Convocatoria abierta: cartel científico con defensa oral.',
 } as const;
+
+/**
+ * Enlace `mailto` del botón "Enviar mi trabajo": abre el cliente de correo
+ * del usuario con un mensaje nuevo ya dirigido al comité, con asunto y un
+ * cuerpo guía. Se codifica con encodeURIComponent para que los acentos y los
+ * saltos de línea lleguen correctamente.
+ */
+const ASUNTO_TRABAJO = `Envío de trabajo libre - ${SITE.eventShortName}`;
+
+const CUERPO_TRABAJO = [
+  'Nombre del trabajo:',
+  'Autores:',
+  'Categoría:',
+  'Adscripción:',
+  'Correo de correspondencia:',
+  '',
+  'Adjunto mi resumen en formato Word.',
+].join('\n');
+
+export const MAILTO_ENVIO_TRABAJO =
+  `mailto:${SITE.contactEmail}` +
+  `?subject=${encodeURIComponent(ASUNTO_TRABAJO)}` +
+  `&body=${encodeURIComponent(CUERPO_TRABAJO)}`;

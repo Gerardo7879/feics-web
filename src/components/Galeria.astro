@@ -1,62 +1,120 @@
 ---
 /**
- * Galería del FEICS 2025 con lightbox accesible (dialog nativo).
- * Para agregar fotos: colócalas en src/assets/ y súmalas al arreglo.
+ * Galería de ediciones pasadas del FEICS, agrupada por año (de la más
+ * reciente a la más antigua) y con lightbox accesible (dialog nativo).
+ *
+ * Para agregar una edición nueva:
+ *   1. Coloca las fotos en src/assets/galeria/ con el nombre feics-AÑO-NN.jpg
+ *   2. Impórtalas arriba y súmalas al arreglo FOTOS con su año y su alt.
+ * El agrupado, el orden y los subtítulos por año se calculan solos.
  */
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import SectionTitle from './SectionTitle.astro';
-import foto1 from '../assets/feics-2025-01.jpg';
-import foto2 from '../assets/feics-2025-02.jpg';
 
-const fotos = [
+import feics2025_01 from '../assets/galeria/feics-2025-01.jpg';
+import feics2025_02 from '../assets/galeria/feics-2025-02.jpg';
+import feics2025_03 from '../assets/galeria/feics-2025-03.jpeg';
+import feics2025_04 from '../assets/galeria/feics-2025-04.jpeg';
+import feics2024_01 from '../assets/galeria/feics-2024-01.jpeg';
+import feics2024_02 from '../assets/galeria/feics-2024-02.jpeg';
+import feics2024_03 from '../assets/galeria/feics-2024-03.jpeg';
+
+interface Foto {
+  src: ImageMetadata;
+  anio: number;
+  /** Descripción para lectores de pantalla; incluye el año y "FEICS". */
+  alt: string;
+}
+
+const FOTOS: readonly Foto[] = [
   {
-    src: foto1,
-    alt: 'Estudiantes conversando junto a los carteles científicos del FEICS 2025',
-    caption: 'Presentación de carteles del FEICS 2025',
+    src: feics2025_01,
+    anio: 2025,
+    alt: 'Estudiantes conversando junto a los carteles científicos durante el FEICS 2025',
   },
   {
-    src: foto2,
+    src: feics2025_02,
+    anio: 2025,
     alt: 'Estudiante presentando su cartel científico ante el público del FEICS 2025',
-    caption: 'Presentación de carteles del FEICS 2025',
   },
-] as const;
+  {
+    src: feics2025_03,
+    anio: 2025,
+    alt: 'Sesión de carteles del FEICS 2025 bajo la lona de bienvenida del foro, con asistentes escuchando una defensa oral',
+  },
+  {
+    src: feics2025_04,
+    anio: 2025,
+    alt: 'Ceremonia de inauguración del FEICS 2025 con el presídium en el auditorio',
+  },
+  {
+    src: feics2024_01,
+    anio: 2024,
+    alt: 'Equipo de estudiantes posando junto a su cartel de investigación en el FEICS 2024',
+  },
+  {
+    src: feics2024_02,
+    anio: 2024,
+    alt: 'Estudiante con gafete de participante frente a su cartel científico en el FEICS 2024',
+  },
+  {
+    src: feics2024_03,
+    anio: 2024,
+    alt: 'Participante en bata blanca presentando su cartel de investigación clínica en el FEICS 2024',
+  },
+];
+
+/** Años presentes en FOTOS, de la edición más reciente a la más antigua. */
+const anios = [...new Set(FOTOS.map((foto) => foto.anio))].sort((a, b) => b - a);
+
+const ediciones = anios.map((anio) => ({
+  anio,
+  fotos: FOTOS.filter((foto) => foto.anio === anio),
+}));
 ---
 
 <section id="galeria" class="scroll-mt-20 py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <SectionTitle eyebrow="Memorias">
-      FEICS <span class="text-gold-dark">2025</span>
+      Ediciones <span class="text-gold-dark">pasadas</span>
     </SectionTitle>
 
-    <ul class="mt-14 grid gap-6 sm:grid-cols-2" role="list">
+    <div class="mt-14 space-y-14">
       {
-        fotos.map((foto, indice) => (
-          <li>
-            <figure>
-              <button
-                type="button"
-                class="group block w-full overflow-hidden rounded-2xl border border-navy/10"
-                data-abrir-foto={indice}
-                aria-label={`Ampliar fotografía: ${foto.alt}`}
-              >
-                <Image
-                  src={foto.src}
-                  alt={foto.alt}
-                  class="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  widths={[480, 800, 1200]}
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  format="webp"
-                  loading="lazy"
-                />
-              </button>
-              <figcaption class="mt-3 text-center text-sm text-secondary">
-                {foto.caption}
-              </figcaption>
-            </figure>
-          </li>
+        ediciones.map((edicion) => (
+          <div>
+            <h3 class="flex items-center gap-4 text-sm font-semibold uppercase tracking-brand text-gold-dark">
+              FEICS {edicion.anio}
+              <span class="h-px flex-1 bg-navy/10" aria-hidden="true" />
+            </h3>
+
+            <ul class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+              {edicion.fotos.map((foto) => (
+                <li>
+                  <button
+                    type="button"
+                    class="group block w-full overflow-hidden rounded-2xl border border-navy/10"
+                    data-abrir-foto
+                    aria-label={`Ampliar fotografía: ${foto.alt}`}
+                  >
+                    <Image
+                      src={foto.src}
+                      alt={foto.alt}
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      widths={[480, 800, 1200]}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      format="webp"
+                      loading="lazy"
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         ))
       }
-    </ul>
+    </div>
   </div>
 </section>
 

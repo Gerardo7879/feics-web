@@ -13,8 +13,13 @@ import SectionTitle from './SectionTitle.astro';
     </SectionTitle>
 
     <div class="mt-14 grid gap-6 md:grid-cols-3">
-      <!-- Tarjeta destacada: evento gratuito -->
-      <div class="rounded-2xl border-2 border-gold bg-gold/10 p-8 text-center">
+      <!--
+        Tarjeta destacada: evento gratuito.
+        Es un dato informativo, no una acción: se distingue con un acento
+        dorado suave y una etiqueta de texto, sin borde ni sombra de botón,
+        sin cursor pointer y sin efecto hover.
+      -->
+      <div class="cursor-default rounded-2xl border border-gold/30 bg-gold/5 p-8 text-center">
         <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="9" />
@@ -22,6 +27,9 @@ import SectionTitle from './SectionTitle.astro';
           </svg>
         </span>
         <h3 class="mt-4 text-lg font-semibold text-navy">Evento gratuito</h3>
+        <p class="mt-1.5 text-xs font-semibold uppercase tracking-brand text-gold-dark">
+          Sin cuota de inscripción
+        </p>
         <p class="mt-2 text-sm leading-relaxed text-secondary">
           Sin costo de asistencia ni de participación. No hay cuota de
           inscripción para ninguna actividad del foro.

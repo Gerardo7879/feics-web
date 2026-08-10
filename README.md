@@ -51,7 +51,7 @@ Un componente por sección en `src/components/`:
 | `Header.astro`      | Navegación fija + botón Registro           |
 | `Hero.astro`        | Portada con lema                           |
 | `QueEs.astro`       | ¿Qué es FEICS? + foto                      |
-| `Ejes.astro`        | Áreas de investigación (tarjetas)          |
+| `Categorias.astro`  | Categorías de trabajos (tarjetas)          |
 | `Programa.astro`    | Agenda / línea de tiempo                   |
 | `Ponentes.astro`    | Grid de ponentes                           |
 | `Convocatoria.astro`| Cómo enviar trabajos + fecha límite        |
@@ -68,7 +68,10 @@ reales conservando el nombre (o actualiza la ruta en el componente):
 
 - `foro.svg` → foto del foro (sección ¿Qué es?)
 - `ponente-1.svg` … `ponente-4.svg` → fotos de ponentes
-- `galeria-1.svg` … `galeria-6.svg` → fotos de ediciones pasadas
+- Galería de ediciones pasadas: coloca las fotos en `src/assets/galeria/` con
+  el nombre `feics-AÑO-NN.jpg` (p. ej. `feics-2024-01.jpg`), impórtalas en
+  `Galeria.astro` y súmalas al arreglo `FOTOS` con su año y su `alt`. El
+  agrupado y el orden por año se calculan solos.
 - `public/og.png` → imagen para compartir en redes (1200×630)
 - El escudo UG del footer es un SVG placeholder dentro de `Footer.astro`
 

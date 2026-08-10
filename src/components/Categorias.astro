@@ -1,0 +1,119 @@
+---
+/**
+ * Categorías de trabajos que acepta la convocatoria: tarjetas con ícono de
+ * línea (marino/dorado), título y descripción breve.
+ *
+ * Nota: aquí NO se repiten las licenciaturas invitadas; esa lista vive en la
+ * sección de Convocatoria, más arriba en la página.
+ */
+import SectionTitle from './SectionTitle.astro';
+
+type Icono =
+  | 'microscopio'
+  | 'expediente'
+  | 'revision'
+  | 'divulgacion'
+  | 'comunidad';
+
+interface Categoria {
+  titulo: string;
+  descripcion: string;
+  icono: Icono;
+}
+
+const categorias: readonly Categoria[] = [
+  {
+    titulo: 'Investigación original',
+    descripcion:
+      'Trabajos con metodología propia y resultados inéditos, obtenidos en campo, laboratorio o clínica.',
+    icono: 'microscopio',
+  },
+  {
+    titulo: 'Caso clínico',
+    descripcion:
+      'Reportes de casos con valor diagnóstico, terapéutico o docente, discutidos frente a la evidencia.',
+    icono: 'expediente',
+  },
+  {
+    titulo: 'Revisión literaria',
+    descripcion:
+      'Síntesis crítica de la evidencia publicada: revisiones narrativas, sistemáticas y estados del arte.',
+    icono: 'revision',
+  },
+  {
+    titulo: 'Divulgación',
+    descripcion:
+      'Proyectos que acercan el conocimiento en salud a públicos no especializados con lenguaje claro.',
+    icono: 'divulgacion',
+  },
+  {
+    titulo: 'Salud pública',
+    descripcion:
+      'Prevención, determinantes sociales y análisis de poblaciones con enfoque epidemiológico o comunitario.',
+    icono: 'comunidad',
+  },
+];
+---
+
+<section id="categorias" class="scroll-mt-20 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionTitle eyebrow="Convocatoria">
+      Categorías de <span class="text-gold-dark">trabajos</span>
+    </SectionTitle>
+
+    <p class="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-secondary">
+      Puedes postular tu trabajo libre en cualquiera de estas cinco categorías.
+    </p>
+
+    <!-- 3 tarjetas en la primera fila y 2 centradas en la segunda (escritorio) -->
+    <ul class="mt-14 flex flex-wrap items-stretch justify-center gap-6" role="list">
+      {
+        categorias.map((categoria) => (
+          <li class="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <div class="flex h-full w-full flex-col items-center rounded-2xl border border-navy/10 bg-card p-7 text-center">
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
+                {categoria.icono === 'microscopio' && (
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 3l4 4-5 5-4-4z" />
+                    <path d="M10 10l2 2M5 21h14M8 21a7 7 0 1 1 11-5.7" />
+                  </svg>
+                )}
+                {categoria.icono === 'expediente' && (
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="4" width="14" height="17" rx="2" />
+                    <path d="M9 2h6v4H9z" />
+                    <path d="M12 11v5m-2.5-2.5h5" />
+                  </svg>
+                )}
+                {categoria.icono === 'revision' && (
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 5a2 2 0 0 1 2-2h5v16H6a2 2 0 0 0-2 2z" />
+                    <path d="M20 5a2 2 0 0 0-2-2h-5" />
+                    <circle cx="17" cy="14" r="3.5" />
+                    <path d="m19.6 16.6 2.4 2.4" />
+                  </svg>
+                )}
+                {categoria.icono === 'divulgacion' && (
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 10v4a1 1 0 0 0 1 1h2l6 4V5L7 9H5a1 1 0 0 0-1 1z" />
+                    <path d="M17 9a4 4 0 0 1 0 6m2.5-8.5a8 8 0 0 1 0 11" />
+                  </svg>
+                )}
+                {categoria.icono === 'comunidad' && (
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="7" r="3" />
+                    <path d="M6 21v-1a6 6 0 0 1 12 0v1" />
+                    <circle cx="4.5" cy="10" r="2" />
+                    <circle cx="19.5" cy="10" r="2" />
+                  </svg>
+                )}
+              </span>
+              <h3 class="mt-5 text-lg font-semibold text-navy">{categoria.titulo}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-secondary">{categoria.descripcion}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

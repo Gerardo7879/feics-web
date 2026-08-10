@@ -4,8 +4,8 @@
  * Única modalidad: cartel científico con defensa oral.
  */
 import { Image } from 'astro:assets';
-import { SITE } from '../config';
-import fotoCarteles from '../assets/feics-2025-01.jpg';
+import { SITE, MAILTO_ENVIO_TRABAJO } from '../config';
+import fotoCarteles from '../assets/galeria/feics-2025-01.jpg';
 ---
 
 <section id="convocatoria" class="scroll-mt-20">
@@ -59,9 +59,13 @@ import fotoCarteles from '../assets/feics-2025-01.jpg';
           Descargar lineamientos (PDF)
         </a>
         <a
-          href={`mailto:${SITE.contactEmail}?subject=Env%C3%ADo%20de%20trabajo%20libre%20%E2%80%94%20IV%20FEICS-UG`}
-          class="rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream"
+          href={MAILTO_ENVIO_TRABAJO}
+          class="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3.5 7 8.5 6 8.5-6" />
+          </svg>
           Enviar mi trabajo a {SITE.contactEmail}
         </a>
       </div>
