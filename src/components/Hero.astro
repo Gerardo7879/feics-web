@@ -45,7 +45,17 @@ import ContourLines from './ContourLines.astro';
         <span aria-hidden="true" class="hidden sm:inline">·</span>
         <span class="whitespace-nowrap">Campus León, UG</span>
       </p>
-      <p class="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-1.5 text-sm font-semibold text-navy">
+      <!--
+        Mismo criterio que la tarjeta "Evento gratuito" de Participacion:
+        sin ícono esta píldora se leía como un botón. El ícono y el peso
+        de fuente la igualan a la píldora de fecha de al lado, y
+        cursor-default deja claro que es un dato, no una acción.
+      -->
+      <p class="inline-flex cursor-default items-center gap-2 rounded-full border border-navy/15 bg-navy/5 px-4 py-1.5 text-sm font-medium text-navy">
+        <svg class="h-4 w-4 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M14.8 9.2c-.5-.8-1.6-1.2-2.8-1.2-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.2 0-2.3-.4-2.8-1.2M12 6.5V8m0 8v1.5" />
+        </svg>
         Evento gratuito
       </p>
     </div>
