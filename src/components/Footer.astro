@@ -64,9 +64,14 @@ const hayRedes = SITE.socials.facebook !== '' || SITE.socials.instagram !== '';
       <!-- Contacto y redes -->
       <div>
         <h2 class="text-sm font-semibold uppercase tracking-widest text-gold">Contacto</h2>
+        <!--
+          Enlace autónomo (no va dentro de una frase), así que le aplica el
+          mínimo de área táctil: min-h-11 lo lleva a 44px sin cambiar el
+          texto ni el tamaño de fuente.
+        -->
         <a
           href={`mailto:${SITE.contactEmail}`}
-          class="mt-3 inline-block text-sm text-white/70 underline-offset-4 hover:text-gold hover:underline"
+          class="mt-1 inline-flex min-h-11 items-center text-sm text-white/70 underline-offset-4 hover:text-gold hover:underline"
         >
           {SITE.contactEmail}
         </a>

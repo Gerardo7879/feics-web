@@ -90,7 +90,9 @@ const faqSchema = {
 
     <p class="mt-10 text-center text-sm text-secondary">
       ¿Tienes otra duda? Escríbenos a{' '}
-      <a href={`mailto:${SITE.contactEmail}`} class="font-medium text-gold-dark underline-offset-4 hover:underline">
+      {/* inline-block + py-2 engorda el area tocable de 17px a ~33px sin
+          sacar el correo de la frase ni cambiar el tamano de fuente. */}
+      <a href={`mailto:${SITE.contactEmail}`} class="inline-block py-2 font-medium text-gold-dark underline-offset-4 hover:underline">
         {SITE.contactEmail}
       </a>
     </p>
