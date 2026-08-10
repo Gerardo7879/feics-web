@@ -51,22 +51,29 @@ import fotoCarteles from '../assets/galeria/feics-2025-01.jpg';
           download
           target="_blank"
           rel="noopener"
-          class="focus-ring-claro inline-flex items-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-colors hover:border-gold hover:text-gold"
+          class="focus-ring-claro inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-white/60 px-8 py-3.5 font-semibold text-white transition-colors hover:border-gold hover:text-gold sm:w-auto"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
           </svg>
           Descargar lineamientos (PDF)
         </a>
+        <!--
+          En móvil se muestra solo "Enviar mi trabajo": el correo completo
+          envolvía a dos líneas y descuadraba el ícono. El aria-label
+          conserva el texto largo (idéntico al visible en escritorio, para
+          no romper el criterio "Label in Name" de WCAG).
+        -->
         <a
           href={MAILTO_ENVIO_TRABAJO}
-          class="focus-ring-claro inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream"
+          aria-label={`Enviar mi trabajo a ${SITE.contactEmail}`}
+          class="focus-ring-claro inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 font-bold text-navy transition-colors hover:bg-cream sm:w-auto"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="5" width="18" height="14" rx="2" />
             <path d="m3.5 7 8.5 6 8.5-6" />
           </svg>
-          Enviar mi trabajo a {SITE.contactEmail}
+          <span>Enviar mi trabajo<span class="hidden lg:inline"> a {SITE.contactEmail}</span></span>
         </a>
       </div>
     </div>
