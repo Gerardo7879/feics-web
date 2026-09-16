@@ -14,8 +14,6 @@ import SectionTitle from './SectionTitle.astro';
 
 import feics2025_01 from '../assets/galeria/feics-2025-01.jpg';
 import feics2025_02 from '../assets/galeria/feics-2025-02.jpg';
-import feics2025_03 from '../assets/galeria/feics-2025-03.jpeg';
-import feics2025_04 from '../assets/galeria/feics-2025-04.jpeg';
 import feics2024_01 from '../assets/galeria/feics-2024-01.jpeg';
 import feics2024_02 from '../assets/galeria/feics-2024-02.jpeg';
 import feics2024_03 from '../assets/galeria/feics-2024-03.jpeg';
@@ -37,16 +35,6 @@ const FOTOS: readonly Foto[] = [
     src: feics2025_02,
     anio: 2025,
     alt: 'Estudiante presentando su cartel científico ante el público del FEICS 2025',
-  },
-  {
-    src: feics2025_03,
-    anio: 2025,
-    alt: 'Sesión de carteles del FEICS 2025 bajo la lona de bienvenida del foro, con asistentes escuchando una defensa oral',
-  },
-  {
-    src: feics2025_04,
-    anio: 2025,
-    alt: 'Ceremonia de inauguración del FEICS 2025 con el presídium en el auditorio',
   },
   {
     src: feics2024_01,
@@ -133,9 +121,9 @@ const ediciones = anios.map((anio) => ({
       <path d="M6 6l12 12M18 6L6 18" />
     </svg>
   </button>
-  <!-- Sin atributo src: con src="" el navegador pide de nuevo la propia
-       página. El script lo asigna al abrir el lightbox. -->
-  <img id="lightbox-img" alt="" class="max-h-[85vh] w-full rounded-xl object-contain" />
+  <!-- Placeholder src agregado para evitar el warning de HTML/Lighthouse de src vacío.
+       El script lo reemplaza al abrir el lightbox. -->
+  <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" class="max-h-[85vh] w-full rounded-xl object-contain hidden" />
 </dialog>
 
 <script>
@@ -149,6 +137,7 @@ const ediciones = anios.map((anio) => ({
       if (!lightbox || !imagenAmpliada || !miniatura) return;
       imagenAmpliada.src = miniatura.currentSrc || miniatura.src;
       imagenAmpliada.alt = miniatura.alt;
+      imagenAmpliada.classList.remove('hidden');
       lightbox.showModal();
     });
   });

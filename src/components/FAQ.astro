@@ -3,7 +3,7 @@
  * Preguntas frecuentes oficiales con acordeones nativos (details/summary)
  * navegables por teclado y datos estructurados FAQPage.
  */
-import { SITE } from '../config';
+import { SITE, FORM_ENVIO_TRABAJO } from '../config';
 import SectionTitle from './SectionTitle.astro';
 
 const preguntas = [
@@ -18,7 +18,7 @@ const preguntas = [
   },
   {
     pregunta: '¿Cuál es la fecha límite para enviar mi resumen?',
-    respuesta: `El ${SITE.abstractDeadline} a las ${SITE.abstractDeadlineTime}, al correo ${SITE.contactEmail}.`,
+    respuesta: `El ${SITE.abstractDeadline} a las ${SITE.abstractDeadlineTime}, mediante el <a href="${FORM_ENVIO_TRABAJO}" target="_blank" rel="noopener noreferrer" class="font-medium text-gold-dark underline-offset-4 hover:underline">formulario de envío de trabajos</a>.`,
   },
   {
     pregunta: '¿En qué modalidad se presenta?',
@@ -26,7 +26,7 @@ const preguntas = [
   },
   {
     pregunta: '¿Cuánto dura la presentación?',
-    respuesta: 'De 5 a 10 minutos, más 3 a 5 minutos de preguntas del jurado.',
+    respuesta: '6 minutos cronometrados de presentación y 3 minutos de réplica con preguntas del jurado.',
   },
   {
     pregunta: '¿Cuántos autores puede tener un trabajo?',
@@ -39,8 +39,32 @@ const preguntas = [
   {
     pregunta: '¿Cómo sé si mi trabajo fue aceptado?',
     respuesta:
-      'Se notifica por correo al autor de correspondencia. Se acepta con 21.0 puntos o más de 30, conforme a la rúbrica oficial.',
+      'Se notifica por correo al autor de correspondencia. Todos los trabajos que cumplan con el formato establecido en los lineamientos son aceptados para presentación en cartel científico con defensa oral.',
   },
+  {
+    pregunta: '¿Qué formato debe tener el resumen?',
+    respuesta: 'Documento de Word (.docx), en español, Arial 11, justificado, de 400 a 450 palabras sin contar título, autores y adscripción. Encabezados en negritas: Introducción, Objetivos, Metodología (o Descripción del caso), Resultados, Conclusiones y Referencias.',
+  },
+  {
+    pregunta: '¿Qué medidas debe tener el cartel?',
+    respuesta: '90 × 120 cm, orientación vertical, legible a un metro de distancia. Referencias en formato Vancouver.',
+  },
+  {
+    pregunta: '¿Debo permanecer junto a mi cartel?',
+    respuesta: 'Sí, al menos un autor debe estar junto al cartel de 11:30 a 13:00 h para la defensa oral ante los evaluadores. El número de mampara se envía por correo al autor de correspondencia.',
+  },
+  {
+    pregunta: '¿Hay premiación?',
+    respuesta: 'Se premian los tres primeros lugares generales según la calificación final del jurado.',
+  },
+  {
+    pregunta: '¿Se publican los trabajos?',
+    respuesta: 'Los resúmenes se publican como memoria en un número especial de REDICINAySA, Revista de Divulgación Científica de Nutrición Ambiental y Seguridad Alimentaria.',
+  },
+  {
+    pregunta: '¿Puedo usar inteligencia artificial?',
+    respuesta: 'El uso de IA en la redacción debe declararse. El plagio o la fabricación de datos descalifica el trabajo de forma inmediata.',
+  }
 ] as const;
 
 const faqSchema = {
@@ -49,7 +73,7 @@ const faqSchema = {
   mainEntity: preguntas.map((item) => ({
     '@type': 'Question',
     name: item.pregunta,
-    acceptedAnswer: { '@type': 'Answer', text: item.respuesta },
+    acceptedAnswer: { '@type': 'Answer', text: item.respuesta.replace(/<[^>]*>?/gm, '') },
   })),
 };
 ---
@@ -82,7 +106,7 @@ const faqSchema = {
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </summary>
-            <p class="px-6 pb-5 text-sm leading-relaxed text-secondary">{item.respuesta}</p>
+            <p class="px-6 pb-5 text-sm leading-relaxed text-secondary" set:html={item.respuesta}></p>
           </details>
         ))
       }

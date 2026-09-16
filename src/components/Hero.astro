@@ -132,16 +132,33 @@ import ContourLines from './ContourLines.astro';
     horas: document.getElementById('cr-horas'),
     minutos: document.getElementById('cr-minutos'),
   };
-  const inicioForo = new Date(SITE.eventStartDateTime).getTime();
+  const inicioForo = new Date(SITE.eventStartDateTime);
+  const inicioForoMs = inicioForo.getTime();
 
   function actualizarCuenta() {
-    const restante = inicioForo - Date.now();
-    if (!contenedor || !celdas.dias || !celdas.horas || !celdas.minutos) return;
+    const ahora = new Date();
+    const restante = inicioForoMs - ahora.getTime();
+    if (!contenedor) return;
+
+    // Estado 2: Día del evento (compara si es exactamente el mismo día)
+    if (
+      ahora.getFullYear() === inicioForo.getFullYear() &&
+      ahora.getMonth() === inicioForo.getMonth() &&
+      ahora.getDate() === inicioForo.getDate()
+    ) {
+      contenedor.innerHTML = '<p class="font-heading text-xl font-bold text-gold-dark uppercase tracking-widest px-4 py-3 bg-card border border-navy/10 rounded-2xl w-full text-center">¡Hoy es el foro!</p>';
+      contenedor.classList.remove('invisible');
+      return;
+    }
+
+    // Estado 3: Pasado (si el tiempo es <= 0 y no es el día)
     if (restante <= 0) {
-      // El foro ya comenzó: se retira la cuenta para no mostrar ceros.
       contenedor.remove();
       return;
     }
+
+    // Estado 1: Futuro (Cuenta regresiva)
+    if (!celdas.dias || !celdas.horas || !celdas.minutos) return;
     celdas.dias.textContent = String(Math.floor(restante / MS_POR_DIA));
     celdas.horas.textContent = String(Math.floor((restante % MS_POR_DIA) / MS_POR_HORA));
     celdas.minutos.textContent = String(Math.floor((restante % MS_POR_HORA) / MS_POR_MINUTO));

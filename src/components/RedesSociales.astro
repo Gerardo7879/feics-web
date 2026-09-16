@@ -1,0 +1,38 @@
+---
+/**
+ * Componente reutilizable para mostrar redes sociales.
+ * Recibe un array de objetos con la info de cada red.
+ */
+interface RedSocial {
+  nombre: string;
+  url: string;
+  iconoHtml: string;
+}
+
+interface Props {
+  redes: RedSocial[];
+  /** Clases adicionales para el contenedor <ul> */
+  class?: string;
+  /** Clases adicionales para cada enlace <a> */
+  linkClass?: string;
+}
+
+const { redes, class: className = "flex gap-4", linkClass = "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold" } = Astro.props;
+---
+
+{redes.length > 0 && (
+  <ul class={className} role="list">
+    {redes.map((red) => (
+      <li>
+        <a
+          href={red.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${red.nombre} de FEICS-UG`}
+          class={linkClass}
+          set:html={red.iconoHtml}
+        />
+      </li>
+    ))}
+  </ul>
+)}

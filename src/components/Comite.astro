@@ -1,6 +1,6 @@
 ---
 /**
- * Comité Organizador del foro (CABMT y MIC) y Comité Estudiantil.
+ * Comité Organizador del foro (CABMT y MIC) y Equipo Organizador Estudiantil.
  */
 import SectionTitle from './SectionTitle.astro';
 
@@ -18,13 +18,13 @@ const vocales = [
 ] as const;
 
 const estudiantil = [
-  { nombre: 'Daniel Gonzalo Gómez Revilla Mancilla', iniciales: 'DG' },
-  { nombre: 'Gerardo Ortiz Castro', iniciales: 'GO' },
-  { nombre: 'Pamela Esqueda Aldrete', iniciales: 'PE' },
-  { nombre: 'Valeria Ortega Albarrán', iniciales: 'VO' },
-  { nombre: 'Víctor Julián Aguiñaga Caballero', iniciales: 'VA' },
-  { nombre: 'Ana Sofía Iñigo Martínez', iniciales: 'AI' },
-  { nombre: 'Luis Gabriel Gómez González', iniciales: 'LG' },
+  { nombre: 'Daniel Gonzalo Gómez Revilla Mancilla', iniciales: 'DG', cargo: 'Coordinación general' },
+  { nombre: 'Gerardo Ortiz Castro', iniciales: 'GO', cargo: 'Coordinación académica y de trabajos libres' },
+  { nombre: 'Pamela Esqueda Aldrete', iniciales: 'PE', cargo: 'Difusión y redes sociales' },
+  { nombre: 'Valeria Ortega Albarrán', iniciales: 'VO', cargo: 'Logística y sede' },
+  { nombre: 'Víctor Julián Aguiñaga Caballero', iniciales: 'VA', cargo: 'Registro y atención a participantes' },
+  { nombre: 'Ana Sofía Iñigo Martínez', iniciales: 'AI', cargo: 'Diseño y comunicación gráfica' },
+  { nombre: 'Luis Gabriel Gómez González', iniciales: 'LG', cargo: 'Vinculación y patrocinios' },
 ] as const;
 ---
 
@@ -73,9 +73,9 @@ const estudiantil = [
       }
     </ul>
 
-    <!-- Comité Estudiantil -->
+    <!-- Equipo Organizador Estudiantil -->
     <h3 class="mt-16 text-center font-heading text-xl font-semibold text-navy sm:mt-20">
-      Comité Estudiantil
+      Equipo Organizador Estudiantil
     </h3>
     <ul class="mx-auto mt-8 flex flex-wrap items-stretch justify-center gap-6" role="list">
       {
@@ -86,7 +86,7 @@ const estudiantil = [
                 {persona.iniciales}
               </span>
               <h3 class="mt-3 font-semibold text-navy">{persona.nombre}</h3>
-              <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">Integrante</p>
+              <p class="mt-1 text-xs font-semibold uppercase tracking-widest text-secondary">{persona.cargo}</p>
             </div>
           </li>
         ))

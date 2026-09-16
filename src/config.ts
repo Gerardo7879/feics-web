@@ -14,17 +14,17 @@ export const SITE = {
   formUrl: 'https://forms.gle/iLxb5V9kvt5J8ux17',
 
   /** Fecha del foro en formato legible. */
-  eventDate: '26 de noviembre de 2026',
+  eventDate: '3 de diciembre de 2026',
 
   /** Fecha en formato ISO (para SEO / datos estructurados). */
-  eventDateISO: '2026-11-26',
+  eventDateISO: '2026-12-03',
 
   /** Inicio del evento con hora y zona horaria (countdown y schema.org).
    *  08:00 corresponde al registro según el programa. */
-  eventStartDateTime: '2026-11-26T08:00:00-06:00',
+  eventStartDateTime: '2026-12-03T08:00:00-06:00',
 
   /** Fecha límite para el envío de resúmenes (trabajos libres). */
-  abstractDeadline: '30 de octubre',
+  abstractDeadline: '20 de noviembre',
   abstractDeadlineTime: '23:59 horas',
 
   /** Sede del evento. */
@@ -39,37 +39,19 @@ export const SITE = {
 
   /** Contacto y redes sociales. [EDITAR] con los enlaces reales.
    *  Deja una red como '' (vacío) para ocultar su ícono en el footer. */
-  contactEmail: 'feicsug@gmail.com',
+  contactEmail: 'feics@ugto.mx',
   socials: {
     facebook: '', // [EDITAR] p. ej. 'https://www.facebook.com/feicsug'
-    instagram: '', // [EDITAR] p. ej. 'https://www.instagram.com/feicsug'
+    instagram: 'https://www.instagram.com/feics_ug',
   },
 
   /** SEO */
   title: 'IV FEICS-UG — Foro Estudiantil de Investigación en Ciencias de la Salud',
   description:
-    'IV Foro Estudiantil de Investigación en Ciencias de la Salud (IV FEICS-UG) de la Universidad de Guanajuato, Campus León. 26 de noviembre de 2026. Evento gratuito. Convocatoria abierta: cartel científico con defensa oral.',
+    'IV Foro Estudiantil de Investigación en Ciencias de la Salud (IV FEICS-UG) de la Universidad de Guanajuato, Campus León. 3 de diciembre de 2026. Evento gratuito. Convocatoria abierta: cartel científico con defensa oral.',
 } as const;
 
 /**
- * Enlace `mailto` del botón "Enviar mi trabajo": abre el cliente de correo
- * del usuario con un mensaje nuevo ya dirigido al comité, con asunto y un
- * cuerpo guía. Se codifica con encodeURIComponent para que los acentos y los
- * saltos de línea lleguen correctamente.
+ * Enlace del formulario de Microsoft Forms para el envío de trabajos libres.
  */
-const ASUNTO_TRABAJO = `Envío de trabajo libre - ${SITE.eventShortName}`;
-
-const CUERPO_TRABAJO = [
-  'Nombre del trabajo:',
-  'Autores:',
-  'Categoría:',
-  'Adscripción:',
-  'Correo de correspondencia:',
-  '',
-  'Adjunto mi resumen en formato Word.',
-].join('\n');
-
-export const MAILTO_ENVIO_TRABAJO =
-  `mailto:${SITE.contactEmail}` +
-  `?subject=${encodeURIComponent(ASUNTO_TRABAJO)}` +
-  `&body=${encodeURIComponent(CUERPO_TRABAJO)}`;
+export const FORM_ENVIO_TRABAJO = 'https://forms.cloud.microsoft/pages/responsepage.aspx?id=cZgrEyXgrU6jTXvV56ODtEShVVEsShhOl2qDEnY2lo5UQ0U2TjY3NVhLUTdQTUhCNE5QNUhCODk0Ny4u&route=shorturl';
