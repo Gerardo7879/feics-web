@@ -25,32 +25,14 @@ const categorias: readonly Categoria[] = [
   {
     titulo: 'Investigación original',
     descripcion:
-      'Trabajos con metodología propia y resultados inéditos, obtenidos en campo, laboratorio o clínica.',
+      'Incluye investigación básica, investigación clínica, investigación epidemiológica y caso clínico.',
     icono: 'microscopio',
   },
   {
-    titulo: 'Caso clínico',
+    titulo: 'Divulgación científica',
     descripcion:
-      'Reportes de casos con valor diagnóstico, terapéutico o docente, discutidos frente a la evidencia.',
-    icono: 'expediente',
-  },
-  {
-    titulo: 'Revisión literaria',
-    descripcion:
-      'Síntesis crítica de la evidencia publicada: revisiones narrativas, sistemáticas y estados del arte.',
-    icono: 'revision',
-  },
-  {
-    titulo: 'Divulgación',
-    descripcion:
-      'Proyectos que acercan el conocimiento en salud a públicos no especializados con lenguaje claro.',
+      'Incluye revisión literaria, proyecto de divulgación, infografía y salud pública.',
     icono: 'divulgacion',
-  },
-  {
-    titulo: 'Salud pública',
-    descripcion:
-      'Prevención, determinantes sociales y análisis de poblaciones con enfoque epidemiológico o comunitario.',
-    icono: 'comunidad',
   },
 ];
 ---
@@ -62,14 +44,14 @@ const categorias: readonly Categoria[] = [
     </SectionTitle>
 
     <p class="mx-auto mt-6 max-w-2xl text-center leading-relaxed text-secondary">
-      Puedes postular tu trabajo libre en cualquiera de estas cinco categorías.
+      Puedes postular tu trabajo libre en cualquiera de estas dos categorías principales.
     </p>
 
-    <!-- 3 tarjetas en la primera fila y 2 centradas en la segunda (escritorio) -->
+    <!-- 2 tarjetas centradas (escritorio) -->
     <ul class="mt-14 flex flex-wrap items-stretch justify-center gap-6" role="list">
       {
         categorias.map((categoria) => (
-          <li class="flex w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+          <li class="flex w-full md:w-[calc(50%-0.75rem)] max-w-md">
             <div class="flex h-full w-full flex-col items-center rounded-2xl border border-navy/10 bg-card p-7 text-center">
               <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream text-gold-dark" aria-hidden="true">
                 {categoria.icono === 'microscopio' && (
